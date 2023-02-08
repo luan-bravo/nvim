@@ -49,4 +49,14 @@ return require("packer").startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("numToStr/Comment.nvim")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "*",
+		config = function()
+			require("toggleterm").setup()
+		end,
+	})
+	use("onsails/lspkind.nvim")
+	use("MunifTanjim/prettier.nvim")
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 end)
