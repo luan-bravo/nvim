@@ -43,4 +43,6 @@ return require('packer').startup(function(use)
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use 'glepnir/lspsaga.nvim'
+  use 'cohama/lexima.vim'
+  use 'tpope/vim-rhubarb'
 end)

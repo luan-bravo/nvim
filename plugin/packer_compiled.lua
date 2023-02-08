@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
+  ["lexima.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lexima.vim",
+    url = "https://github.com/cohama/lexima.vim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-zero.nvim",
@@ -194,6 +199,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-rhubarb"] = {
+    loaded = true,
+    path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-rhubarb",
+    url = "https://github.com/tpope/vim-rhubarb"
   }
 }
 
