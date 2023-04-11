@@ -4,7 +4,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
     'tsserver',
---    'sumneko_lua',
+    -- 'sumneko_lua',
     'rust_analyzer',
 })
 
@@ -48,7 +48,9 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
     if client.name == "tsserver" then
-        client.resolved_capabilities.documents_formatting = false
+        --  deprecated resolved_capabilities
+        -- client.resolved_capabilities.documents_formatting = false
+        client.server_capabilities.documents_formatting = false
     end
     local opts = {buffer = bufnr, remap = false}
 
