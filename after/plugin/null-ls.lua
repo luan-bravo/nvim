@@ -13,6 +13,6 @@ null_ls.setup({
         -- diagnostics.flake8,
         formatting.stylua,
         diagnostics.eslint,
-        null_ls.builtins.completion.spell
+        -- null_ls.builtins.completion.spell
     },
 })
