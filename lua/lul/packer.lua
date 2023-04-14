@@ -58,4 +58,5 @@ return require("packer").startup(function(use)
 	})
 	use("onsails/lspkind.nvim")
 	use("MunifTanjim/prettier.nvim")
+    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
 end)
