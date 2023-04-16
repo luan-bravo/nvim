@@ -5,3 +5,4 @@ This is a very basic but effective .vimrc made by [@ThePrimeagen](https://github
 I'll eventually get to make it my own.
 
 - list
+- testing

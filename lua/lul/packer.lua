@@ -39,6 +39,7 @@ return require("packer").startup(function(use)
 		},
 	})
 	use("windwp/nvim-autopairs")
+    use("kyazdani42/nvim-web-devicons")
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -48,7 +49,6 @@ return require("packer").startup(function(use)
 	use("tpope/vim-rhubarb")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("numToStr/Comment.nvim")
-	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use({
 		"akinsho/toggleterm.nvim",
 		tag = "*",
