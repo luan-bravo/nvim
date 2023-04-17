@@ -96,6 +96,6 @@ require('bufferline').setup {
     }
 }
 
-vim.keymap.set("n", "gn", ":bnext<CR>")
-vim.keymap.set("n", "gp", ":bprevious<CR>")
-vim.keymap.set("n", "<C-w>", ":bdelete<CR>")
+vim.keymap.set("n", "gn", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "gp", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<C-q>", ":bdelete<CR>", { silent = true })

@@ -2,7 +2,13 @@ local status, toggleterm = pcall(require, "toggleterm")
 if not status then
 	return
 end
-
+if (vim.fn.has("unix") or vim.fn.has("macunix")) then
+    local sh = "zsh"
+elseif (vim.fn.has("win32")) then
+    local sh = "pwsh.exe"
+else 
+    local sh = "bash"
+end
 toggleterm.setup({
 	-- size can be a number or function which is passed the current terminal
 	size = function(term)
@@ -45,7 +51,7 @@ toggleterm.setup({
 	persist_mode = true, -- if set to true (default) the previous terminal mode will be remembered
 	direction = "horizontal",
 	close_on_exit = true, -- close the terminal window when the process exits
-	shell = "pwsh.exe", -- change the default shell
+	shell = sh, -- change the default shell
 	auto_scroll = true, -- automatically scroll to the bottom on terminal output
 	-- This field is only relevant if direction is set to 'float'
 	float_opts = {
