@@ -39,7 +39,7 @@ return require("packer").startup(function(use)
 		},
 	})
 	use("windwp/nvim-autopairs")
-    use("kyazdani42/nvim-web-devicons")
+	use("kyazdani42/nvim-web-devicons")
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -58,5 +58,24 @@ return require("packer").startup(function(use)
 	})
 	use("onsails/lspkind.nvim")
 	use("MunifTanjim/prettier.nvim")
-    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
+	-- Unless you are still migrating, remove the deprecated commands from v1.x
+	vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+	})
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+	})
 end)
