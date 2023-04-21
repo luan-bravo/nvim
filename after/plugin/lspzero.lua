@@ -62,7 +62,7 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.workspace_symbol()
 	end, opts)
 	-- LSP buf code_action
-	vim.keymap.set("n", "<leader>vca", function()
+	vim.keymap.set("n", "<leader>a", function()
 		vim.lsp.buf.code_action()
 	end, opts)
 	-- LSP buf references

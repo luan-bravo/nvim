@@ -76,4 +76,5 @@ return require("packer").startup(function(use)
             vim.o.timeoutlen = 300
         end
     }
+	use("kabouzeid/nvim-lspinstall")
 end)
