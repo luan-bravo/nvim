@@ -8,6 +8,7 @@ vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 vim.cmd([[ command! Format execute ':lua vim.lsp.buf.format()' ]])
 vim.keymap.set("n", "<leader>f", ":Format<CR>")
 vim.keymap.set("n", "<leader>w", ":Format<CR>:w<CR>")
+vim.keymap.set("n", "<leader>q", ":qa!<CR>")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 

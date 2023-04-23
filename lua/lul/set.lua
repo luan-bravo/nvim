@@ -6,6 +6,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.cmd.set('wrap')
 
 vim.opt.smartindent = true
 
@@ -38,5 +39,4 @@ vim.cmd([[let g:clipboard = {
   \   },
   \   'cache_enabled': 1,
 \ }]])
-vim.cmd([[set wrap]])
 -- vim.opt.colorcolumn = "80"
