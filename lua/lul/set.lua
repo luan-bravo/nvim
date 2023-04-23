@@ -2,7 +2,6 @@
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
-
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
@@ -39,4 +38,5 @@ vim.cmd([[let g:clipboard = {
   \   },
   \   'cache_enabled': 1,
 \ }]])
+vim.cmd([[set wrap]])
 -- vim.opt.colorcolumn = "80"
