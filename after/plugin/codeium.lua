@@ -1,4 +1,3 @@
-require("codeium")
 vim.keymap.set("i", "<leader><CR>", function()
 	return vim.fn["codeium#Accept"]()
 end)
