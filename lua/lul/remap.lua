@@ -46,10 +46,13 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>")
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
+vim.keymap.set("n", "<leader>tt", function()
+	require("theprimeagen.typist").next(16)
+end)
+
 -- Fix del key on xfce4 term emu
 vim.keymap.set("n", "<C-h>", "x")
 vim.keymap.set("i", "<C-h>", "<del>")
 
-vim.keymap.set("n", "<leader>tt", function()
-	require("theprimeagen.typist").next(16)
-end)
+vim.keymap.set("n", "<leader>,w", ":Neorg workspace work<CR>")
+vim.keymap.set("n", "<leader>,h", ":Neorg workspace home<CR>")

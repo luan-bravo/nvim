@@ -99,4 +99,5 @@ return require("packer").startup(function(use)
 		run = ":Neorg sync-parsers",
 		requires = "nvim-lua/plenary.nvim",
 	})
+	use("Exafunction/codeium.vim")
 end)
