@@ -100,4 +100,5 @@ return require("packer").startup(function(use)
 		requires = "nvim-lua/plenary.nvim",
 	})
 	use("Exafunction/codeium.vim")
+	use("lukas-reineke/indent-blankline.nvim")
 end)
