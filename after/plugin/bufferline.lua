@@ -79,10 +79,9 @@ require("bufferline").setup({
 		show_buffer_close_icons = true,
 		-- DEPRECATED
 		-- show_buffer_default_icon = true, -- whether or not an unrecognised filetype should show a default icons
-    -- use get_element_icon function instead
-		get_element_icon = function(buf)
-			return require("nvim-web-devicons").get_icon(..., { default = false })
-		end,
+		-- use get_element_icon function ins
+		-- get_element_icon = function(buf) return require("nvim-web-devicons").get_icon(..., { default = false }) end,
+
 		show_close_icon = true,
 		show_tab_indicators = false,
 		show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
