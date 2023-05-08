@@ -3,6 +3,8 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("i", "<leader>jj", "<Esc>")
 vim.keymap.set("n", "<C-s>", vim.cmd.w)
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
+vim.keymap.set("i", "<C-BS>", "<C-w>")
+vim.keymap.set("i", "<C-h>", "<C-w>")
 
 -- Auto Format -- Null-ls / lsp
 vim.cmd([[ command! Format execute ':lua vim.lsp.buf.format()' ]])
@@ -16,7 +18,6 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -52,7 +53,7 @@ end)
 
 -- Fix del key on xfce4 term emu
 vim.keymap.set("n", "<C-h>", "x")
-vim.keymap.set("i", "<C-h>", "<del>")
+vim.keymap.set("i", "<C-h>", "<C-w>")
 
 vim.keymap.set("n", "<leader>,w", ":Neorg workspace work<CR>")
 vim.keymap.set("n", "<leader>,h", ":Neorg workspace home<CR>")
