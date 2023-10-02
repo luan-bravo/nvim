@@ -70,37 +70,17 @@ return require("packer").startup(function(use)
 			},
 		},
 	})
+	use("kabouzeid/nvim-lspinstall")
+	use("Exafunction/codeium.vim")
+	use("lukas-reineke/indent-blankline.nvim")
+	use("stevearc/vim-arduino")
+	use("mfussenegger/nvim-dap")
 	use({
 		"folke/which-key.nvim",
 		config = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
+			require("which-key").setup({})
 		end,
 	})
-	use("kabouzeid/nvim-lspinstall")
-	use({
-		"nvim-neorg/neorg",
-		config = function()
-			require("neorg").setup({
-				load = {
-					["core.defaults"] = {}, -- Loads default behaviour
-					["core.concealer"] = {}, -- Adds pretty icons to your documents
-					["core.dirman"] = { -- Manages Neorg workspaces
-						config = {
-							workspaces = {
-								work = "~/notes/work",
-								home = "~/notes/home",
-							},
-						},
-					},
-				},
-			})
-		end,
-		run = ":Neorg sync-parsers",
-		requires = "nvim-lua/plenary.nvim",
-	})
-	use("Exafunction/codeium.vim")
-	use("lukas-reineke/indent-blankline.nvim")
-	use("stevearc/vim-arduino")
-	use("mfussenegger/nvim-dap")
 end)
