@@ -116,7 +116,7 @@ _G.packer_plugins = {
   },
   ["codeium.vim"] = {
     loaded = true,
-    path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\codeium.vim",
+    path = "/home/lul/.local/share/nvim/site/pack/packer/start/codeium.vim",
     url = "https://github.com/Exafunction/codeium.vim"
   },
   ["friendly-snippets"] = {
@@ -136,7 +136,7 @@ _G.packer_plugins = {
   },
   ["indent-blankline.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\indent-blankline.nvim",
+    path = "/home/lul/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["lexima.vim"] = {
@@ -179,12 +179,6 @@ _G.packer_plugins = {
     path = "/home/lul/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
     url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
   },
-  neorg = {
-    config = { "\27LJ\2\nÚ\1\0\0\a\0\14\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\f\0005\3\3\0004\4\0\0=\4\4\0034\4\0\0=\4\5\0035\4\t\0005\5\a\0005\6\6\0=\6\b\5=\5\n\4=\4\v\3=\3\r\2B\0\2\1K\0\1\0\tload\1\0\0\16core.dirman\vconfig\1\0\0\15workspaces\1\0\0\1\0\2\twork\17~/notes/work\thome\17~/notes/home\19core.concealer\18core.defaults\1\0\0\nsetup\nneorg\frequire\0" },
-    loaded = true,
-    path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neorg",
-    url = "https://github.com/nvim-neorg/neorg"
-  },
   ["nui.nvim"] = {
     loaded = true,
     path = "/home/lul/.local/share/nvim/site/pack/packer/start/nui.nvim",
@@ -207,7 +201,7 @@ _G.packer_plugins = {
   },
   ["nvim-dap"] = {
     loaded = true,
-    path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-dap",
+    path = "/home/lul/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-lspconfig"] = {
@@ -217,7 +211,7 @@ _G.packer_plugins = {
   },
   ["nvim-lspinstall"] = {
     loaded = true,
-    path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-lspinstall",
+    path = "/home/lul/.local/share/nvim/site/pack/packer/start/nvim-lspinstall",
     url = "https://github.com/kabouzeid/nvim-lspinstall"
   },
   ["nvim-treesitter"] = {
@@ -267,7 +261,7 @@ _G.packer_plugins = {
   },
   ["vim-arduino"] = {
     loaded = true,
-    path = "C:\\Users\\lul\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-arduino",
+    path = "/home/lul/.local/share/nvim/site/pack/packer/start/vim-arduino",
     url = "https://github.com/stevearc/vim-arduino"
   },
   ["vim-fugitive"] = {
@@ -289,10 +283,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: neorg
-time([[Config for neorg]], true)
-try_loadstring("\27LJ\2\nÚ\1\0\0\a\0\14\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\f\0005\3\3\0004\4\0\0=\4\4\0034\4\0\0=\4\5\0035\4\t\0005\5\a\0005\6\6\0=\6\b\5=\5\n\4=\4\v\3=\3\r\2B\0\2\1K\0\1\0\tload\1\0\0\16core.dirman\vconfig\1\0\0\15workspaces\1\0\0\1\0\2\twork\17~/notes/work\thome\17~/notes/home\19core.concealer\18core.defaults\1\0\0\nsetup\nneorg\frequire\0", "config", "neorg")
-time([[Config for neorg]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
