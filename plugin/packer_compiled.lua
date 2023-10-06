@@ -204,6 +204,11 @@ _G.packer_plugins = {
     path = "/home/lul/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
+  ["nvim-dap-vscode-js"] = {
+    loaded = true,
+    path = "/home/lul/.local/share/nvim/site/pack/packer/start/nvim-dap-vscode-js",
+    url = "https://github.com/mxsdev/nvim-dap-vscode-js"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/lul/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
