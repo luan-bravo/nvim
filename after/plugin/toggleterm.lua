@@ -2,12 +2,12 @@ local status, toggleterm = pcall(require, "toggleterm")
 if not status then
 	return
 end
-if (vim.fn.has("unix") or vim.fn.has("macunix")) then
-    local sh = "zsh"
-elseif (vim.fn.has("win32")) then
-    local sh = "pwsh.exe"
-else 
-    local sh = "bash"
+if vim.fn.has("unix") or vim.fn.has("macunix") then
+	local sh = "zsh"
+elseif vim.fn.has("win32") then
+	local sh = "pwsh.exe"
+else
+	local sh = "bash"
 end
 toggleterm.setup({
 	-- size can be a number or function which is passed the current terminal
