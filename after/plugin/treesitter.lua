@@ -1,7 +1,17 @@
 require("nvim-treesitter.install").compilers = { "zig" }
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all" (the four listed parsers should always be installed)
-	ensure_installed = { "typescript", "javascript", "rust", "python", "c", "lua", "vim" },
+	ensure_installed = {
+		"typescript",
+		"javascript",
+		"rust",
+		"python",
+		"c",
+		"lua",
+		"vim",
+		"markdown",
+		"markdown_inline",
+	},
 	-- Install parsers synchronously (only applied to `ensurpreviouse_installed`)
 	sync_install = false,
 	-- Automatically install missing parsers when entering buffer
