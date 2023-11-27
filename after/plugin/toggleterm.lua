@@ -62,7 +62,7 @@ toggleterm.setup({
 		border = "single",
 		-- like `size`, width and height can be a number or function which is passed the current terminal
 		--width = < value >,
-		--height = < value >,
+		height = 3,
 		winblend = 3,
 	},
 })
