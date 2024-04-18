@@ -85,4 +85,5 @@ return require("packer").startup(function(use)
 			require("which-key").setup({})
 		end,
 	})
+  use("nvim-neotest/nvim-nio")
 end)
