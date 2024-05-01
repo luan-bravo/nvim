@@ -71,7 +71,7 @@ return require("packer").startup(function(use)
 		},
 	})
 	use("kabouzeid/nvim-lspinstall")
-	use("Exafunction/codeium.vim")
+	-- use("Exafunction/codeium.vim")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("stevearc/vim-arduino")
 	use("mfussenegger/nvim-dap")
