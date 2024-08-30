@@ -49,10 +49,19 @@ vim.keymap.set(
     "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
 )
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+
+-- luan-brav0 mods from here on
+vim.keymap.set("n", "<leader>f", ":Format<CR>")
+vim.keymap.set("n", "<leader>w", ":Format<CR>:w<CR>")
+vim.keymap.set("n", "<leader>q", ":qa!<CR>")
+
+vim.keymap.set("n", "<leader>f", ":Format<CR>")
+vim.keymap.set("n", "<leader>w", ":Format<CR>:w<CR>")
+vim.keymap.set("n", "<leader>q", ":qa!<CR>")
 
