@@ -1,8 +1,7 @@
-
-local local_plugins = {
-    {
-        "harpoon",
-        dir = "~/personal/harpoon",
+return  {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = {"nvim-lua/plenary.nvim"},
         config = function()
             local harpoon = require("harpoon")
 
@@ -19,24 +18,25 @@ local local_plugins = {
             vim.keymap.set("n", "<leader><C-t>", function() harpoon:list():replace_at(2) end)
             vim.keymap.set("n", "<leader><C-n>", function() harpoon:list():replace_at(3) end)
             vim.keymap.set("n", "<leader><C-s>", function() harpoon:list():replace_at(4) end)
-        end
-    },
-    {
-        "vim-apm", dir = "~/personal/vim-apm",
-        config = function()
-            --[[
-            local apm = require("vim-apm")
+        -- basic telescope configuration
+        local conf = require("telescope.config").values
+        local function toggle_telescope(harpoon_files)
+            local file_paths = {}
+            for _, item in ipairs(harpoon_files.items) do
+                table.insert(file_paths, item.value)
+            end
 
-            apm:setup({})
-            vim.keymap.set("n", "<leader>apm", function() apm:toggle_monitor() end)
-            --]]
+            require("telescope.pickers").new({}, {
+                prompt_title = "Harpoon",
+                finder = require("telescope.finders").new_table({
+                    results = file_paths,
+                }),
+                previewer = conf.file_previewer({}),
+                sorter = conf.generic_sorter({}),
+            }):find()
         end
-    },
-    {
-        "vim-with-me", dir = "~/personal/vim-with-me",
-        config = function() end
-    },
+
+        vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
+            { desc = "Open harpoon window" })
+    end,
 }
-
-return local_plugins
-
