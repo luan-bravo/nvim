@@ -56,12 +56,8 @@ end)
 
 
 -- luan-brav0 mods from here on
-vim.keymap.set("n", "<leader>f", ":Format<CR>")
-vim.keymap.set("n", "<leader>w", ":Format<CR>:w<CR>")
-vim.keymap.set("n", "<leader>q", ":qa!<CR>")
+-- vim.keymap.set("n", "<leader>f", ":Format<CR>")
 
 -- vim.keymap.set("n", "<leader>f", ":Format<CR>")
-vim.keymap.set("n", "<leader>ww", ":w<CR>")
-vim.keymap.set("n", "<leader>wa", ":wa<CR>")
-vim.keymap.set("n", "<leader>qq", ":q<CR>")
-vim.keymap.set("n", "<leader>qa", ":qa<CR>")
+vim.keymap.set("n", "<leader>w", ":w<CR>")
+vim.keymap.set("n", "<leader>q", ":q<CR>")
