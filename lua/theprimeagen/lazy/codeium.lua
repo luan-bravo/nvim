@@ -2,6 +2,8 @@ return {
     "Exafunction/codeium.vim",
 
     config = function()
+        -- disable codeium by default
+        vim.g.codeium_enabled = false
         vim.keymap.set("i", "<C-q>", function()
             return vim.fn["codeium#Accept"]()
         end, { expr = true })
