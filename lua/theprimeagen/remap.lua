@@ -54,10 +54,6 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
-
 -- luan-brav0 mods from here on
--- vim.keymap.set("n", "<leader>f", ":Format<CR>")
-
--- vim.keymap.set("n", "<leader>f", ":Format<CR>")
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
