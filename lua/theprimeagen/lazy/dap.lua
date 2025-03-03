@@ -16,64 +16,13 @@ return {
         vim.keymap.set("n", "<leader>B", function()
             dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
         end)
-
-        --[[
-        dap.adapters["pwa-node"] = {
-            type = "server",
-            host = "localhost",
-            port = "${port}",
-            executable = {
-                command = "node",
-                -- 💀 Make sure to update this path to point to your installation
-                args = {"/path/to/js-debug/src/dapDebugServer.js", "${port}"},
-            }
-        }
-        dap.adapters.chrome
-
-        local js_based_languages = { "typescript", "javascript", "javascriptreact", "typescriptreact" }
-        for _, language in ipairs(js_based_languages) do
-            dap.configurations[language] = {
-                {
-                    type = "pwa-node",
-                    request = "launch",
-                    name = "Launch file",
-                    program = "${file}",
-                    cwd = "${workspaceFolder}",
-                },
-                {
-                    type = "pwa-node",
-                    request = "attach",
-                    name = "Attach",
-                    processId = require("dap.utils").pick_process,
-                    cwd = "${workspaceFolder}",
-                },
-                {
-                    {
-                        type = "chrome",
-                        request = "attach",
-                        program = "${file}",
-                        cwd = vim.fn.getcwd(),
-                        sourceMaps = true,
-                        protocol = "inspector",
-                        port = 9222,
-                        webRoot = "${workspaceFolder}"
-                    }
-                },
-                {
-                    {
-                        type = "chrome",
-                        request = "attach",
-                        program = "${file}",
-                        cwd = vim.fn.getcwd(),
-                        sourceMaps = true,
-                        protocol = "inspector",
-                        port = 9222,
-                        webRoot = "${workspaceFolder}"
-                    }
-                },
-            }
-        end
-        ]]--
+        -- Custom breakpoint sign
+        vim.fn.sign_define("DapBreakpoint", {
+            text = "🔴",
+            texthl = "SignColumn",
+            linehl = "",
+            numhl = ""
+        })
 
         dap.adapters.c = {
             type = "executable",
@@ -84,7 +33,7 @@ return {
         dap.configurations.c = {
             {
                 name = "Launch file",
-                type = "cpp",
+                type = "c",
                 request = "launch",
                 program = function()
                     return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
@@ -94,13 +43,11 @@ return {
                 args = {},
             },
         }
-
-        dap.adapters.cpp = dap.adapters.c
         dap.configurations.cpp = dap.configurations.c
-
-        dap.adapters.zig = dap.adapters.c
         dap.configurations.zig = dap.configurations.c
 
+        dap.adapters.cpp = dap.adapters.c
+        dap.adapters.zig = dap.adapters.c
         dap.adapters.rust = dap.adapters.c
         dap.configurations.rust = {
             {
@@ -140,6 +87,11 @@ return {
                 program = "${file}",
             },
         }
+
+        -- Telescope integration
+        require("telescope").load_extension("dap")
+        vim.keymap.set("n", "<leader>dc", "<cmd>Telescope dap commands<CR>", { desc = "DAP Commands" })
+        vim.keymap.set("n", "<leader>db", "<cmd>Telescope dap list_breakpoints<CR>", { desc = "DAP Breakpoint" })
+        vim.keymap.set("n", "<leader>dv", "<cmd>Telescope dap variables<CR>", { desc = "DAP Variables" })
     end,
 }
-
