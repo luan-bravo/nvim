@@ -27,8 +27,16 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "rust_analyzer",
+                "bashls",
                 "gopls",
+                "zls",
+                "ts_ls",
+                "eslint",
+                "clangd",
+                "cssls",
+                "htmx",
+                "rust_analyzer",
+                "asm_lsp",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -51,7 +59,6 @@ return {
                     })
                     vim.g.zig_fmt_parse_errors = 0
                     vim.g.zig_fmt_autosave = 0
-
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
@@ -103,5 +110,10 @@ return {
                 prefix = "",
             },
         })
+        -- luan-brav0 custom lsp config
+        -- set zsh files to be treated as bash by lsps
+        require('lspconfig').bashls.setup {
+            filetypes = { "sh", "bash", "zsh" },
+        }
     end
 }

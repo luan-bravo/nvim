@@ -72,13 +72,15 @@ require("theprimeagen.remap")
 require("theprimeagen.lazy_init")
 -- ... (rest of your existing code)
 
+----------------------------------
 -- luan-brav0 configs from here on
+----------------------------------
+
 -- Clipboard configuration based on environment
 local function setup_clipboard()
   local is_wsl = vim.fn.has("wsl") == 1 or os.getenv("WSL_DISTRO_NAME") ~= nil
   local is_windows = vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
   local is_linux = vim.fn.has("unix") == 1 and not (is_wsl or is_windows)
-
   if is_wsl or is_windows then
     vim.g.clipboard = {
       name = "wslclipboard",
@@ -107,10 +109,10 @@ local function setup_clipboard()
     }
   end
 end
-
 setup_clipboard()
 
--- In init.lua, after your existing autocommands
+
+-- Redo (go down undotree)
 autocmd({"BufEnter", "BufNewFile"}, {
   group = ThePrimeagenGroup, -- Reuse your existing group
   pattern = "*", -- Apply to all files
@@ -121,3 +123,23 @@ autocmd({"BufEnter", "BufNewFile"}, {
     end
   end,
 })
+
+
+-- Treat zsh files like bash files
+vim.filetype.add({
+  extension = {
+    zsh = "bash",
+  },
+})
+-- Really ensure bash like highlighting
+local zshgroup = augroup("FiletypeZsh", { clear = true })
+autocmd("FileType", {
+  group = zshgroup,
+  pattern = "zsh",
+  callback = function()
+    vim.bo.syntax = "bash"
+  end,
+})
+-- vim.cmd [[
+--   autocmd FileType zsh setlocal syntax=bash
+-- ]]
