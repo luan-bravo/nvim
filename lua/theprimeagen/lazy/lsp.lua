@@ -39,7 +39,6 @@ return {
                 "asm_lsp",
                 "marksman",
                 "ltex",
-                "harper_ls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
