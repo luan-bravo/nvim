@@ -27,7 +27,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>D", [["_d]])
 
 -- This is going to get me canceled
 vim.keymap.set("i", "<C-c>", "<Esc>")
@@ -58,6 +58,7 @@ end)
 -- luan-brav0 mods from here on
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>W", ":wa<CR>")
+vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>Q", ":q!<CR>")
 vim.keymap.set("n", "<leader>x", ":bdelete<CR>")
 vim.keymap.set("n", "<leader>h", ":bprevious<CR>")
