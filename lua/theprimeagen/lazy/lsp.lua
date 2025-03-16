@@ -98,6 +98,10 @@ return {
                 { name = 'luasnip' }, -- For `luasnip` users.
             }, {
                 { name = 'buffer' },
+                { name = 'path' },
+                { name = 'nvim_lua' },
+                { name = 'cmdline' },
+
             })
         })
 
