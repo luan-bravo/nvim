@@ -3,7 +3,6 @@ return {
     dependencies = {
         "rcarriga/nvim-dap-ui",
         "theHamsta/nvim-dap-virtual-text",
-        "nvim-telescope/telescope-dap.nvim",
     },
     config = function()
         local dap = require("dap")
@@ -87,11 +86,5 @@ return {
                 program = "${file}",
             },
         }
-
-        -- Telescope integration
-        require("telescope").load_extension("dap")
-        vim.keymap.set("n", "<leader>dc", "<cmd>Telescope dap commands<CR>", { desc = "DAP Commands" })
-        vim.keymap.set("n", "<leader>db", "<cmd>Telescope dap list_breakpoints<CR>", { desc = "DAP Breakpoint" })
-        vim.keymap.set("n", "<leader>dv", "<cmd>Telescope dap variables<CR>", { desc = "DAP Variables" })
     end,
 }
