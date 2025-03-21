@@ -25,22 +25,6 @@ return {
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "bashls",
-                "gopls",
-                "zls",
-                "ts_ls",
-                "eslint",
-                "clangd",
-                "cssls",
-                "htmx",
-                "rust_analyzer",
-                "asm_lsp",
-                "marksman",
-                "ltex",
-                "harper_ls",
-            },
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
