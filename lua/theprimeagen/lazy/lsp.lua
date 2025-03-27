@@ -36,17 +36,16 @@ return {
                 "cssls",
                 "htmx",
                 "rust_analyzer",
-                "asm_lsp",
                 "marksman",
-                "ltex",
+                "nil_ls",
             },
+
             handlers = {
                 function(server_name) -- default handler (optional)
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
-
                 zls = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.zls.setup({
@@ -101,7 +100,6 @@ return {
                 { name = 'path' },
                 { name = 'nvim_lua' },
                 { name = 'cmdline' },
-
             })
         })
 

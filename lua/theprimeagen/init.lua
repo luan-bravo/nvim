@@ -2,17 +2,6 @@ require("theprimeagen.set")
 require("theprimeagen.remap")
 require("theprimeagen.lazy_init")
 
--- DO.not
--- DO NOT INCLUDE THIS
-
--- If I want to keep doing lsp debugging
--- function restart_htmx_lsp()
---     require("lsp-debug-tools").restart({ expected = {}, name = "htmx-lsp", cmd = { "htmx-lsp", "--level", "DEBUG" }, root_dir = vim.loop.cwd(), });
--- end
-
--- DO NOT INCLUDE THIS
--- DO.not
-
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 
@@ -68,7 +57,7 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 ----------------------------------
--- luan-brav0 configs from here on
+-- luan-bravo configs from here on
 ----------------------------------
 
 -- Clipboard configuration based on environment
