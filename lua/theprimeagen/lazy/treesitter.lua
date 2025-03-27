@@ -5,8 +5,14 @@ return {
         require("nvim-treesitter.configs").setup({
             -- A list of parser names, or "all"
             ensure_installed = {
-                "vimdoc", "javascript", "typescript", "c", "lua", "rust",
-                "jsdoc", "bash",
+                "c", "cpp", "lua", "rust", "zig", "markdown", "go", "java", "kotlin",
+                "javascript", "typescript", "css", "html",
+                "bash", "nix",
+                "toml", "yaml", "json", "xml",
+                "vimdoc", "jsdoc",
+            },
+            ignore_install = {
+                "gitcommit", -- It removes git commit diff highlighting for some reason
             },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
