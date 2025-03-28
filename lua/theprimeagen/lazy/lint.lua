@@ -7,6 +7,8 @@ return {
             zsh = {"shellcheck"},
         }
 
+
+        lint.linters.shellcheck.cmd = vim.fn.stdpath("data") .. "/mason/bin/shellcheck"
         vim.api.nvim_create_autocmd({"BufWritePost", "BufEnter"}, {
             callback = function()
                 lint.try_lint()
