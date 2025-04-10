@@ -60,10 +60,17 @@ vim.keymap.set("n", "<leader>w", ":w<CR>")
 vim.keymap.set("n", "<leader>W", ":wa<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>Q", ":q!<CR>")
+
 vim.keymap.set("n", "<leader>x", ":bdelete<CR>")
 vim.keymap.set("n", "<leader>h", ":bprevious<CR>")
 vim.keymap.set("n", "<leader>l", ":bnext<CR>")
 
+vim.keymap.set({"n","i","v"}, "<PageUp>", "<PageUp>zz")
+vim.keymap.set({"n","i","v"}, "<PageDown>", "<PageDown>zz")
+
+vim.keymap.set("n", "<leader>.w", function()
+    vim.wo.wrap = not vim.wo.wrap
+end)
 
 -- Track the messages buffer number
 local messages_bufnr = nil
