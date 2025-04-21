@@ -122,3 +122,14 @@ autocmd({ "BufNewFile", "BufRead" }, {
     vim.bo.syntax = "bash"
   end,
 })
+-- Access nvim config anywhere in a new tab
+vim.api.nvim_create_user_command('Configuration', function()
+    -- Create a new tab
+        vim.cmd('tabnew')
+        -- Change directory for the current tab to ~/.config/nvim
+        vim.cmd('tcd ~/.config/nvim')
+        -- Open the file explorer (using Netrw)
+        vim.cmd('Explore')
+    end,
+{ desc = 'Open Neovim config directory in a new tab with file explorer' }
+)
