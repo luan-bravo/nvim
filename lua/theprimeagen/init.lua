@@ -113,15 +113,6 @@ vim.filetype.add({
   },
 })
 
--- Ensure bash like highlighting
-local zshgroup = augroup("FiletypeZsh", { clear = true })
-autocmd({ "BufNewFile", "BufRead" }, {
-  group = zshgroup,
-  pattern = { "*.zsh", ".zshrc", ".zshenv" },
-  callback = function()
-    vim.bo.syntax = "bash"
-  end,
-})
 -- Access nvim config anywhere in a new tab
 vim.api.nvim_create_user_command('Configuration', function()
     -- Create a new tab
