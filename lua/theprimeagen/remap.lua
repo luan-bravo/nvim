@@ -75,28 +75,27 @@ end)
 -- Track the messages buffer number
 local messages_bufnr = nil
 vim.keymap.set("n", "<leader>msg", function()
-    -- If the messages buffer exists and is valid, wipe it
-    if messages_bufnr and vim.api.nvim_buf_is_valid(messages_bufnr) then
-        vim.cmd("bwipeout " .. messages_bufnr)
-        -- Reset after wiping
-        messages_bufnr = nil
-    end
-
-    -- Open a new 10-line split with a new buffer
-    vim.cmd("below 10split +enew")
-    messages_bufnr = vim.api.nvim_get_current_buf()
-
-    -- Populate with messages
-    vim.cmd("redir @\">")
-    vim.cmd("silent messages")
-    vim.cmd("redir END")
-    -- Paste the register contents into the buffer
-    vim.cmd("put")
-
-    -- Configure the buffer
-    vim.bo.modifiable = true
-    vim.bo.filetype = "text"
-    -- Prevent saving as a file
-    vim.bo.buftype = "nofile"
-    vim.cmd("normal! gg")
-end, { noremap = true, desc = "Opens split buffer with ':messages' contents" })
+        -- If the messages buffer exists and is valid, wipe it
+        if messages_bufnr and vim.api.nvim_buf_is_valid(messages_bufnr) then
+            vim.cmd("bwipeout " .. messages_bufnr)
+            -- Reset after wiping
+            messages_bufnr = nil
+        end
+        -- Open a new 10-line split with a new buffer
+        vim.cmd("below 10split +enew")
+        messages_bufnr = vim.api.nvim_get_current_buf()
+        -- Populate with messages
+        vim.cmd("redir @\">")
+        vim.cmd("silent messages")
+        vim.cmd("redir END")
+        -- Paste the register contents into the buffer
+        vim.cmd("put")
+        -- Configure the buffer
+        vim.bo.modifiable = true
+        vim.bo.filetype = "text"
+        -- Prevent saving as a file
+        vim.bo.buftype = "nofile"
+        vim.cmd("normal! gg")
+    end,
+    { noremap = true, desc = "Opens split buffer with ':messages' contents" }
+)
