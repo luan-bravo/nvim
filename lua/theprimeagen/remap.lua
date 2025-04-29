@@ -87,3 +87,19 @@ vim.keymap.set("n", "<leader>msg", function()
     end,
     { noremap = true, desc = "Opens hsplit buffer with ':messages' contents" }
 )
+
+-- Go to first letter character
+vim.keymap.set("n", "<leader>fl", function()
+        vim.cmd("normal! 0")
+        vim.fn.search("[a-zA-Z]", "c", vim.fn.line("."))
+    end,
+    { noremap=true, silent=true, desc = "Go to first letter character" }
+)
+
+-- Go to first alphanulmeric character
+vim.keymap.set("n", "<leader>fa", function()
+        vim.cmd("norm! 0")
+        vim.fn.search("[a-zA-Z0-9]", "c", vim.fn.line("."))
+    end,
+    { noremap=true, silent=true, desc = "Go to first alphanulmeric character" }
+)
