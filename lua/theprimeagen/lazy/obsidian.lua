@@ -21,46 +21,35 @@ return {
                 { name = "classes", path = "~/notes/classes", },
                 { name = "studies", path = "~/notes/studies", },
             },
-            -- Only for .md
-
-            -- TODO: fix toggle_checkbox
+        vim.api.nvim_create_autocmd({"BufEnter", "BufRead"}, {
+            group = vim.api.nvim_create_augroup("MarkdownGroup", {}),
+            pattern = "*.md",
+            callback = function()
+                vim.keymap.set("n", "<leader><cr>", function()
+                        return obsidian.util.smart_action()
+                    end, { buffer = true, expr = true,
+                        desc = "Obsidian smart action" }
+                )
+                vim.keymap.set("n", "<leader>ox", function()
+                        return obsidian.util.toggle_checkbox()
+                    end, { buffer = true, expr = true,
+                        desc = "Obsidian Toggle checkbox" }
+                )
                 --[[
-                    E5108: Error executing lua: ...ocal/share/nvim/lazy/obsidian.nvim/lua/obsidian/util.lua:525: E565: Not allowed to change text or change window
-                    stack traceback:
-                    [C]: in function 'nvim_buf_set_lines'
-                    ...ocal/share/nvim/lazy/obsidian.nvim/lua/obsidian/util.lua:525: in function <...ocal/share/nvim/lazy/obsidian.nvim/lua/obsidian/util.lua:498>
+                -- Obsidian toggle list
+                vim.keymap.set("n", "<leader>ol", function()
+                        return obsidian.util.smart_action()
+                    end,
+                    { buffer = true, expr = true }
+                )
+                -- toggle numbered list
+                vim.keymap.set("n", "<leader>on", function()
+                        return obsidian.util.smart_action()
+                    end,
+                    { buffer = true, expr = true }
+                )
                 --]]
-            -- TODO: add group properly
-                -- expected `,` or ``
+            end,
         })
-    local mdGroup = vim.api.nvim_create_autocmd("MarkdownGroup", {})
-    vim.api.nvim_create_autocmd("MarkdownGroup", {
-        group = mdGroup,
-        pattern = "*.md",
-        callback = function()
-            vim.keymap.set("n", "<leader><cr>", function()
-                    return obsidian.util.smart_action()
-                end,
-                { buffer = true, expr = true }
-            )
-            vim.keymap.set("n", "<leader>ox", function()
-                    return obsidian.util.toggle_checkbox()
-                end,
-                { buffer = true, expr = true }
-            )
-            --[[
-            vim.keymap.set("n", "<leader>ol", function()
-                    return obsidian.util.smart_action()
-                end,
-                { buffer = true, expr = true }
-            )
-            vim.keymap.set("n", "<leader>on", function()
-                    return obsidian.util.smart_action()
-                end,
-                { buffer = true, expr = true }
-            )
-        --]]
-        end,
-    })
     end
 }
