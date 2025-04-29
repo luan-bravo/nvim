@@ -112,7 +112,19 @@ vim.api.nvim_create_user_command('Configuration', function()
         -- Open the file explorer (using Netrw)
         vim.cmd('Explore')
     end,
-{ desc = 'Open Neovim config directory in a new tab with file explorer' }
+{ desc = 'Open nvim config dir in a new tab with Explorer' }
+)
+
+-- Access notes dir anywhere in a new tab
+vim.api.nvim_create_user_command('Notes', function()
+    -- Create a new tab
+        vim.cmd('tabnew')
+        -- Change directory for the current tab to ~/.config/nvim
+        vim.cmd('tcd ~/notes')
+        -- Open the file explorer (using Netrw)
+        vim.cmd('Explore')
+    end,
+{ desc = 'Open nvim config dir in a new tab with Explorer' }
 )
 
 vim.g.netrw_browse_split = 0
