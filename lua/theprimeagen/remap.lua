@@ -45,7 +45,7 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 vim.keymap.set("n", "<leader><leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Make it Rain" });
 
-vim.keymap.set("n", "<leader><leader>", function()
+vim.keymap.set("n", "<leader><leader><leader>", function()
     vim.cmd("so")
 end, { desc = "Source nvim config" })
 
