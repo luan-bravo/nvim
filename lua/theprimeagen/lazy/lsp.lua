@@ -34,10 +34,8 @@ return {
                 "eslint",
                 "clangd",
                 "cssls",
-                "htmx",
                 "rust_analyzer",
                 "marksman",
-                "nil_ls",
             },
 
             handlers = {
