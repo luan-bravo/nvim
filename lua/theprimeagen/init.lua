@@ -50,15 +50,6 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, { buffer = e.buf, desc = "Previous diagnostic" })
     end
 })
-
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-
-----------------------------------
--- luan-bravo configs from here on
-----------------------------------
-
 -- Clipboard configuration based on environment
 local is_wsl = vim.fn.has("wsl") == 1 or os.getenv("WSL_DISTRO_NAME") ~= nil
 local is_windows = vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
@@ -123,3 +114,9 @@ vim.api.nvim_create_user_command('Configuration', function()
     end,
 { desc = 'Open Neovim config directory in a new tab with file explorer' }
 )
+
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 0
