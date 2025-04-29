@@ -18,84 +18,72 @@ end)
 vim.keymap.set("n", "<leader>svwm", function()
     require("vim-with-me").StopVimWithMe()
 end)
-]]
+--]]
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Delete to void and Paste" })
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank selection to clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = "Yank line to clipboard" })
 
-vim.keymap.set({ "n", "v" }, "<leader>D", [["_d]])
+vim.keymap.set({ "n", "v" }, "<leader>D", [["_d]], { desc = "Delete to void" })
 
 -- This is going to get me canceled
-vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Escape" })
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "tmux neww sessionizer" })
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format buffer" })
 
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Cnext" })
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Cprev" })
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Lnext" })
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Lprev" })
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Substitute word" })
 
-vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
-)
-
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
+vim.keymap.set("n", "<leader><leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Make it Rain" });
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
-end)
+end, { desc = "Source nvim config" })
 
--- luan-brav0 mods from here on
-vim.keymap.set("n", "<leader>w", ":w<CR>")
-vim.keymap.set("n", "<leader>W", ":wa<CR>")
-vim.keymap.set("n", "<leader>q", ":q<CR>")
-vim.keymap.set("n", "<leader>Q", ":q!<CR>")
+-- why vim.cmd not work here like under there?
+vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Write" } )
+vim.keymap.set("n", "<leader>W", ":wall<CR>", { desc = "Write All" })
+vim.keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Quit" })
+vim.keymap.set("n", "<leader>Q", ":quit!<CR>", { desc = "Quit!" })
 
-vim.keymap.set("n", "<leader>x", ":bdelete<CR>")
-vim.keymap.set("n", "<leader>h", ":bprevious<CR>")
-vim.keymap.set("n", "<leader>l", ":bnext<CR>")
+vim.keymap.set("n", "<leader>x", ":bdelete<CR>", { desc = "Buffer Delete" })
+vim.keymap.set("n", "<leader>h", ":bprevious<CR>", { desc = "Buffer Previous" })
+vim.keymap.set("n", "<leader>l", ":bnext<CR>", { desc = "Buffer Next" })
 
 vim.keymap.set({"n","i","v"}, "<PageUp>", "<PageUp>zz")
 vim.keymap.set({"n","i","v"}, "<PageDown>", "<PageDown>zz")
 
 vim.keymap.set("n", "<leader>.w", function()
-    vim.wo.wrap = not vim.wo.wrap
-end)
+        vim.wo.wrap = not vim.wo.wrap
+    end, { desc = "Toggle wrap" }
+)
 
--- Track the messages buffer number
+-- Track the messages buffer number -- grok
 local messages_bufnr = nil
 vim.keymap.set("n", "<leader>msg", function()
-        -- If the messages buffer exists and is valid, wipe it
         if messages_bufnr and vim.api.nvim_buf_is_valid(messages_bufnr) then
             vim.cmd("bwipeout " .. messages_bufnr)
-            -- Reset after wiping
             messages_bufnr = nil
         end
-        -- Open a new 10-line split with a new buffer
         vim.cmd("below 10split +enew")
         messages_bufnr = vim.api.nvim_get_current_buf()
-        -- Populate with messages
         vim.cmd("redir @\">")
         vim.cmd("silent messages")
         vim.cmd("redir END")
-        -- Paste the register contents into the buffer
         vim.cmd("put")
-        -- Configure the buffer
         vim.bo.modifiable = true
         vim.bo.filetype = "text"
-        -- Prevent saving as a file
         vim.bo.buftype = "nofile"
         vim.cmd("normal! gg")
     end,
-    { noremap = true, desc = "Opens split buffer with ':messages' contents" }
+    { noremap = true, desc = "Opens hsplit buffer with ':messages' contents" }
 )
