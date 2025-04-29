@@ -103,3 +103,31 @@ vim.keymap.set("n", "<leader>fa", function()
     end,
     { noremap=true, silent=true, desc = "Go to first alphanulmeric character" }
 )
+
+-- Toggle Vexplore
+local function toggle_vexplore()
+    local netrw_found = false
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+        if filetype == 'netrw' then
+            netrw_found = true
+            vim.api.nvim_win_close(win, true)
+            break
+        end
+    end
+    if not netrw_found then
+        vim.cmd('Vexplore')
+    end
+end
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'netrw',
+  callback = function()
+    if vim.fn.winnr('$') == 1 then
+      vim.g.netrw_browse_split = 0
+    else
+      vim.g.netrw_browse_split = 4
+    end
+  end,
+})
+vim.keymap.set('n', '<leader>e', toggle_vexplore, { noremap = true, silent = true, desc = "Toggle Vexplore"})
