@@ -34,3 +34,6 @@ vim.opt.updatetime = 50
 vim.opt.list = true
 vim.opt.listchars:append("space:⠂") -- \uec07
 vim.opt.listchars:append("eol:") -- \ue621
+
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
