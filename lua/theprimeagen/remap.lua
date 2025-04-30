@@ -34,7 +34,6 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Escape" })
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "tmux neww sessionizer" })
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "Format buffer" })
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Cnext" })
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Cprev" })
