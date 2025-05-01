@@ -151,3 +151,5 @@ vim.keymap.set("v", "<leader>,B", "di******<esc>hhP", { desc = "Surround w/ B" }
 
 vim.keymap.set("v", "<leader>.>", [[:s/^\(\s\+\)/\1\1/<CR>]], { desc = "Double indentation" })
 vim.keymap.set("v", "<leader>.<", [[:s/^\(\s\+\)\1/\1/<CR>]], { desc = "Half indentation" })
+
+vim.keymap.set("n", "z/",[[:exe ':spellrare! ' .. expand('<cWORD>')<CR>)]], { noremap = true, desc = "Add rare spelling to file", })
