@@ -37,3 +37,6 @@ vim.opt.listchars:append("eol:") -- \ue621
 
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
+
+vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
+vim.opt.ignorecase = true
