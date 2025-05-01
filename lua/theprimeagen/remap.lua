@@ -92,7 +92,7 @@ vim.keymap.set("n", "<leader>fl", function()
     vim.fn.search("[a-zA-Z]", "c", vim.fn.line("."))
 end, { noremap=true, silent=true, desc = "Go to first letter character" })
 
--- Go to first alphanulmeric character
+-- Go to first alphanumeric character
 vim.keymap.set("n", "<leader>fa", function()
     vim.cmd("norm! 0")
     vim.fn.search("[a-zA-Z0-9]", "c", vim.fn.line("."))
