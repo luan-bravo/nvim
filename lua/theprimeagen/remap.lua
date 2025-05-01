@@ -128,6 +128,7 @@ vim.keymap.set('n', '<leader>e', toggle_vexplore, { noremap = true, silent = tru
 
 vim.keymap.set("v", "<leader>,\"", "di\"\"<esc>P", { desc = "Surround w/ \"" })
 vim.keymap.set("v", "<leader>,'", "di''<esc>P", { desc = "Surround w/ '" })
+vim.keymap.set("v", "<leader>,`", "di``<esc>P", { desc = "Surround w/ `" })
 vim.keymap.set("v", "<leader>,<", "di<><esc>P", { desc = "Surround w/ <" })
 vim.keymap.set("v", "<leader>,>", "di<><esc>P", { desc = "Surround w/ >" })
 vim.keymap.set("v", "<leader>,{", "di{}<esc>P", { desc = "Surround w/ {" })
