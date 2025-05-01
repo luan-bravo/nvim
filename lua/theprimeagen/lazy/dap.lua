@@ -171,10 +171,11 @@ return {
         end)
 
 
-        -- Telescope integration
-        require("telescope").load_extension("dap")
-        vim.keymap.set("n", "<leader>dc", "<cmd>Telescope dap commands<CR>", { desc = "DAP Commands" })
-        vim.keymap.set("n", "<leader>db", "<cmd>Telescope dap list_breakpoints<CR>", { desc = "DAP Breakpoint" })
-        vim.keymap.set("n", "<leader>dv", "<cmd>Telescope dap variables<CR>", { desc = "DAP Variables" })
+        -- TODO: Make into cmd commands
+        -- -- Telescope integration
+        -- require("telescope").load_extension("dap")
+        -- vim.keymap.set("n", "<leader>dc", "<cmd>Telescope dap commands<CR>", { desc = "DAP Commands" })
+        -- vim.keymap.set("n", "<leader>db", "<cmd>Telescope dap list_breakpoints<CR>", { desc = "DAP Breakpoint" })
+        -- vim.keymap.set("n", "<leader>dv", "<cmd>Telescope dap variables<CR>", { desc = "DAP Variables" })
     end,
 }
