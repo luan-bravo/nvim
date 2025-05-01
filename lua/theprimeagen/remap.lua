@@ -62,46 +62,39 @@ vim.keymap.set({"n","i","v"}, "<PageUp>", "<PageUp>zz")
 vim.keymap.set({"n","i","v"}, "<PageDown>", "<PageDown>zz")
 
 vim.keymap.set("n", "<leader>.w", function()
-        vim.wo.wrap = not vim.wo.wrap
-    end, { desc = "Toggle wrap" }
-)
+    vim.wo.wrap = not vim.wo.wrap
+end, { desc = "Toggle wrap" })
 
 -- Track the messages buffer number -- grok
 local messages_bufnr = nil
 vim.keymap.set("n", "<leader>msg", function()
-        if messages_bufnr and vim.api.nvim_buf_is_valid(messages_bufnr) then
-            vim.cmd("bwipeout " .. messages_bufnr)
-            messages_bufnr = nil
-        end
-        vim.cmd("below 10split +enew")
-        messages_bufnr = vim.api.nvim_get_current_buf()
-        vim.cmd("redir @\">")
-        vim.cmd("silent messages")
-        vim.cmd("redir END")
-        vim.cmd("put")
-        vim.bo.modifiable = true
-        vim.bo.filetype = "text"
-        vim.bo.buftype = "nofile"
-        vim.cmd("normal! gg")
-    end,
-    { noremap = true, desc = "Opens hsplit buffer with ':messages' contents" }
-)
+    if messages_bufnr and vim.api.nvim_buf_is_valid(messages_bufnr) then
+        vim.cmd("bwipeout " .. messages_bufnr)
+        messages_bufnr = nil
+    end
+    vim.cmd("below 10split +enew")
+    messages_bufnr = vim.api.nvim_get_current_buf()
+    vim.cmd("redir @\">")
+    vim.cmd("silent messages")
+    vim.cmd("redir END")
+    vim.cmd("put")
+    vim.bo.modifiable = true
+    vim.bo.filetype = "text"
+    vim.bo.buftype = "nofile"
+    vim.cmd("normal! gg")
+end, { noremap = true, desc = "Opens hsplit buffer with ':messages' contents" })
 
 -- Go to first letter character
 vim.keymap.set("n", "<leader>fl", function()
-        vim.cmd("normal! 0")
-        vim.fn.search("[a-zA-Z]", "c", vim.fn.line("."))
-    end,
-    { noremap=true, silent=true, desc = "Go to first letter character" }
-)
+    vim.cmd("normal! 0")
+    vim.fn.search("[a-zA-Z]", "c", vim.fn.line("."))
+end, { noremap=true, silent=true, desc = "Go to first letter character" })
 
 -- Go to first alphanulmeric character
 vim.keymap.set("n", "<leader>fa", function()
-        vim.cmd("norm! 0")
-        vim.fn.search("[a-zA-Z0-9]", "c", vim.fn.line("."))
-    end,
-    { noremap=true, silent=true, desc = "Go to first alphanulmeric character" }
-)
+    vim.cmd("norm! 0")
+    vim.fn.search("[a-zA-Z0-9]", "c", vim.fn.line("."))
+end, { noremap=true, silent=true, desc = "Go to first alphanulmeric character" })
 
 -- Toggle Vexplore
 local function toggle_vexplore()
