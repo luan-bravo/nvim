@@ -23,11 +23,13 @@ end)
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Delete to void and Paste" })
 
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+p]], { desc = "Past from clipboard" })
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank selection to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]], { desc = "Yank line to clipboard" })
 
 vim.keymap.set({ "n", "v" }, "<leader>D", [["_d]], { desc = "Delete to void" })
+vim.keymap.set({ "n", "v" }, "<leader>d", [["+d]], { desc = "Delete to clipboard" })
 
 -- This is going to get me canceled
 vim.keymap.set("i", "<C-c>", "<Esc>", { desc = "Escape" })
