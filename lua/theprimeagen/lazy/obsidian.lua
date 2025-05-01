@@ -21,6 +21,17 @@ return {
                 { name = "classes", path = "~/notes/classes", },
                 { name = "studies", path = "~/notes/studies", },
             },
+            -- ui = {
+            --     enable = true,
+            --     checkboxes = {
+            --     [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+            --     ["x"] = { char = "", hl_group = "ObsidianDone" },
+            --     [">"] = { char = "", hl_group = "ObsidianRightArrow" },
+            --     ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+            --     ["!"] = { char = "", hl_group = "ObsidianImportant" },
+            --     },
+            -- },
+        })
         vim.api.nvim_create_autocmd({"BufEnter", "BufRead"}, {
             group = vim.api.nvim_create_augroup("MarkdownGroup", {}),
             pattern = "*.md",
