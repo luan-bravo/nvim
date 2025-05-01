@@ -149,5 +149,5 @@ vim.keymap.set("v", "<leader>,b", "di****<esc>hP", { desc = "Surround w/ b" })
 vim.keymap.set("v", "<leader>,I", "di******<esc>hhP", { desc = "Surround w/ I" })
 vim.keymap.set("v", "<leader>,B", "di******<esc>hhP", { desc = "Surround w/ B" })
 
-vim.keymap.set("v","<leader>.>", [[:s/^\(\s\+\)/\1\1/<CR>]], { desc = "Double indentation" })
-vim.keymap.set("v","<leader>.<", [[:s/^\(\s\+\)\1/\1/<CR>]], { desc = "Half indentation" })
+vim.keymap.set("v", "<leader>.>", [[:s/^\(\s\+\)/\1\1/<CR>]], { desc = "Double indentation" })
+vim.keymap.set("v", "<leader>.<", [[:s/^\(\s\+\)\1/\1/<CR>]], { desc = "Half indentation" })
