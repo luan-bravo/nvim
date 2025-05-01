@@ -113,14 +113,14 @@ local function toggle_vexplore()
     end
 end
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'netrw',
-  callback = function()
-    if vim.fn.winnr('$') == 1 then
-      vim.g.netrw_browse_split = 0
-    else
-      vim.g.netrw_browse_split = 4
-    end
-  end,
+    pattern = 'netrw',
+    callback = function()
+        if vim.fn.winnr('$') == 1 then
+            vim.g.netrw_browse_split = 0
+        else
+            vim.g.netrw_browse_split = 4
+        end
+    end,
 })
 vim.keymap.set('n', '<leader>e', toggle_vexplore, { noremap = true, silent = true, desc = "Toggle Vexplore"})
 
@@ -145,3 +145,6 @@ vim.keymap.set("v", "<leader>,i", "di**<esc>P", { desc = "Surround w/ i" })
 vim.keymap.set("v", "<leader>,b", "di****<esc>hP", { desc = "Surround w/ b" })
 vim.keymap.set("v", "<leader>,I", "di******<esc>hhP", { desc = "Surround w/ I" })
 vim.keymap.set("v", "<leader>,B", "di******<esc>hhP", { desc = "Surround w/ B" })
+
+vim.keymap.set("v","<leader>.>", [[:s/^\(\s\+\)/\1\1/<CR>]], { desc = "Double indentation" })
+vim.keymap.set("v","<leader>.<", [[:s/^\(\s\+\)\1/\1/<CR>]], { desc = "Half indentation" })
