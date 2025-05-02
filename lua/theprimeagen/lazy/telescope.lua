@@ -34,7 +34,7 @@ return {
                 -- vim.keymap.set("n", "<leader>pt", builtin.telescope, { desc = "Telescope in command line" })
         vim.keymap.set("n", "<leader>pp", ":Telescope<cr>", { desc = "Telescope in command line" })
         vim.keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "Telescope live grep" })
-        vim.keymap.set("n", "<leader>pcb", builtin.current_buffer_fuzzy_find, { desc = "Telescope current buffer fuzzy find" })
+        vim.keymap.set("n", "<leader>pb", builtin.current_buffer_fuzzy_find, { desc = "Telescope current buffer fuzzy find" })
         vim.keymap.set("n", "<leader>pm", builtin.marks, { desc = "Telescope marks" })
         vim.keymap.set("n", "<leader>pr", builtin.registers, { desc = "Telescope registers" })
         vim.keymap.set("n", "<leader>pk", builtin.keymaps, { desc = "Telescope keymaps" })
