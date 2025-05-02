@@ -120,6 +120,17 @@ vim.g.netrw_winsize = 25
 vim.g.netrw_liststyle = 3
 vim.g.netrw_browse_split = 0
 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'netrw',
+    callback = function()
+        if vim.fn.winnr('$') == 1 then
+            vim.g.netrw_browse_split = 0
+        else
+            vim.g.netrw_browse_split = 4
+        end
+    end,
+})
+
 vim.api.nvim_create_user_command('Format', function()
     vim.lsp.buf.format()
 end, { desc = 'Open nvim config dir in a new tab with Explorer' })

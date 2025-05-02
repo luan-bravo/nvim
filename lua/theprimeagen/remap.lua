@@ -113,18 +113,6 @@ local function toggle_vexplore()
     if not netrw_found then
         vim.cmd('Vexplore')
     end
-end
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = 'netrw',
-    callback = function()
-        if vim.fn.winnr('$') == 1 then
-            vim.g.netrw_browse_split = 0
-        else
-            vim.g.netrw_browse_split = 4
-        end
-    end,
-})
-vim.keymap.set('n', '<leader>e', toggle_vexplore, { noremap = true, silent = true, desc = "Toggle Vexplore"})
 
 vim.keymap.set("v", "<leader>,\"", "di\"\"<esc>P", { desc = "Surround w/ \"" })
 vim.keymap.set("v", "<leader>,'", "di''<esc>P", { desc = "Surround w/ '" })
