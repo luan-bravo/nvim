@@ -12,6 +12,7 @@
     - [ ] Nicer gruvier **status line** (again)
     - [ ] A floating **command line** with highlighting and fzf ([Noice.nvim by FOLKE](https://github.com/folke/noice.nvim) perhaps?)
     - [ ] [which key](https://github.com/folke/which-key.nvim) by the GOAT **[FOLKE](https://github.com/folke) OH MY BOY FOLKE**
+    - [ ] navigate telescope history key maps
 - Fix:
     - [ ] Refactor surround keymaps
     - [ ] Finally fix markdown note taking in nvim to ditch the [Obsidian App]()
@@ -28,3 +29,4 @@
         - [ ] Ignore once
         - [ ] Ignore always
     - [ ] Other modes (e.g. `x`)
+    - [ ] fugitive
