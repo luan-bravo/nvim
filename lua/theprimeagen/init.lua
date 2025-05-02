@@ -8,6 +8,7 @@ local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
+-- (?)
 function R(name)
     require("plenary.reload").reload_module(name)
 end
@@ -50,76 +51,66 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, { buffer = e.buf, desc = "Previous diagnostic" })
     end
 })
+
 -- Clipboard configuration based on environment
 local is_wsl = vim.fn.has("wsl") == 1 or os.getenv("WSL_DISTRO_NAME") ~= nil
 local is_windows = vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1
 local is_linux = vim.fn.has("unix") == 1 and not (is_wsl or is_windows)
 if is_wsl or is_windows then
-vim.g.clipboard = {
-  name = "wslclipboard",
-  copy = {
-    ["+"] = "clip.exe",
-    ["*"] = "clip.exe",
-  },
-  paste = {
-    ["+"] = "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))",
-    ["*"] = "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))",
-  },
-  cache_enabled = 0,
-}
+    vim.g.clipboard = {
+        name = "wslclipboard",
+        copy = {
+            ["+"] = "clip.exe",
+            ["*"] = "clip.exe",
+        },
+        paste = {
+            ["+"] = "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))",
+            ["*"] = "powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace(\"`r\", \"\"))",
+        },
+        cache_enabled = 0,
+    }
 elseif is_linux then
-vim.g.clipboard = {
-  name = "xclip",
-  copy = {
-    ["+"] = "xclip -selection clipboard",
-    ["*"] = "xclip -selection primary",
-  },
-  paste = {
-    ["+"] = "xclip -selection clipboard -o",
-    ["*"] = "xclip -selection primary -o",
-  },
-  cache_enabled = 0,
-}
+    vim.g.clipboard = {
+        name = "xclip",
+        copy = {
+            ["+"] = "xclip -selection clipboard",
+            ["*"] = "xclip -selection primary",
+        },
+        paste = {
+            ["+"] = "xclip -selection clipboard -o",
+            ["*"] = "xclip -selection primary -o",
+        },
+        cache_enabled = 0,
+    }
 end
-
 
 -- Redo (go down undotree)
 autocmd({"BufEnter", "BufNewFile"}, {
-  group = ThePrimeagenGroup, -- Reuse your existing group
-  pattern = "*", -- Apply to all files
-  callback = function()
-    -- Only set U as redo for normal file buffers (not special ones)
-    if vim.bo.buftype == "" then
-      vim.keymap.set("n", "U", "<C-R>", { noremap = true, buffer = true, desc = "Redo" })
-    end
-  end,
+    group = ThePrimeagenGroup,
+    pattern = "*",
+    callback = function()
+        -- Only set U as redo for normal file buffers (not special ones)
+        if vim.bo.buftype == "" then
+            vim.keymap.set("n", "U", "<C-R>", { noremap = true, buffer = true, desc = "Redo" })
+        end
+    end,
 })
 
-
--- Treat zsh files like bash files
 vim.filetype.add({
-  extension = {
-    zsh = "bash",
-  },
+    extension = {
+        zsh = "bash",
+    },
 })
 
--- Access nvim config anywhere in a new tab
 vim.api.nvim_create_user_command('Configuration', function()
-    -- Create a new tab
     vim.cmd('tabnew')
-    -- Change directory for the current tab to ~/.config/nvim
     vim.cmd('tcd ~/.config/nvim')
-    -- Open the file explorer (using Netrw)
     vim.cmd('Explore')
 end, { desc = 'Open nvim config dir in a new tab with Explorer' })
 
--- Access notes dir anywhere in a new tab
 vim.api.nvim_create_user_command('Notes', function()
-    -- Create a new tab
     vim.cmd('tabnew')
-    -- Change directory for the current tab to ~/.config/nvim
     vim.cmd('tcd ~/notes')
-    -- Open the file explorer (using Netrw)
     vim.cmd('Explore')
 end, { desc = 'Open nvim config dir in a new tab with Explorer' })
 
