@@ -38,14 +38,14 @@ return {
         ]]
 
         -- not working; TODO: fix this, lua lsp and lua cmp
-        vim.keymap.set("n", "<leader>ium", function() commands.toggle() end)
-        vim.keymap.set("n", "<leader>chat", function() commands.chat() end)
-        vim.keymap.set("i", "<C-q>", function() neocodeium.accept() end)
-        vim.keymap.set("i", "<C-e>", function() neocodeium.accept_line() end)
-        vim.keymap.set("i", "<C-r>", function() neocodeium.accept_word() end)
-        vim.keymap.set("i", "<C-x>", function() neocodeium.clear() end)
-        vim.keymap.set("i", "<C-d>", function() neocodeium.cycle_or_complete(-1) end)
-        vim.keymap.set("i", "<C-f>", function() neocodeium.cycle_or_complete(1) end)
+        vim.keymap.set("n", "<leader>ium", function() commands.toggle() end, { desc = "NeoCodeium toggle " })
+        vim.keymap.set("n", "<leader>chat", function() commands.chat() end, { desc = "NeoCodeium chat " })
+        vim.keymap.set("i", "<C-q>", function() neocodeium.accept() end, { desc = "NeoCodeium accept " })
+        vim.keymap.set("i", "<C-e>", function() neocodeium.accept_line() end, { desc = "NeoCodeium accept_line " })
+        vim.keymap.set("i", "<C-r>", function() neocodeium.accept_word() end, { desc = "NeoCodeium accept_word " })
+        vim.keymap.set("i", "<C-x>", function() neocodeium.clear() end, { desc = "NeoCodeium clear " })
+        vim.keymap.set("i", "<C-d>", function() neocodeium.cycle_or_complete(-1) end, { desc = "NeoCodeium cycle_or_complete -1" })
+        vim.keymap.set("i", "<C-f>", function() neocodeium.cycle_or_complete(1) end, { desc = "NeoCodeium cycle_or_complete 1" })
 
     end,
 }

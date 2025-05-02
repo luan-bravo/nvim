@@ -144,31 +144,31 @@ return {
         })
 
         -- Steps
-        vim.keymap.set({ "n", "i" }, "<F1>", dap.continue)
-        vim.keymap.set({ "n", "i" }, "<F2>", dap.step_into)
-        vim.keymap.set({ "n", "i" }, "<F3>", dap.step_over)
-        vim.keymap.set({ "n", "i" }, "<F4>", dap.step_out)
-        vim.keymap.set({ "n", "i" }, "<F5>", dap.step_back)
+        vim.keymap.set({ "n", "i" }, "<F1>", dap.continue, { desc = "DAP continue" })
+        vim.keymap.set({ "n", "i" }, "<F2>", dap.step_into, { desc = "DAP step into" })
+        vim.keymap.set({ "n", "i" }, "<F3>", dap.step_over, { desc = "DAP step over" })
+        vim.keymap.set({ "n", "i" }, "<F4>", dap.step_out, { desc = "DAP step out" })
+        vim.keymap.set({ "n", "i" }, "<F5>", dap.step_back, { desc = "DAP step back" })
         -- Breakpoints
-        vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
-        vim.keymap.set("n", "<leader>gb", dap.run_to_cursor)
+        vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP toggle breakpoint" })
+        vim.keymap.set("n", "<leader>gb", dap.run_to_cursor, { desc = "DAP run to cursor" })
         vim.keymap.set("n", "<leader>B", function()
             dap.clear_breakpoints()
-        end)
+        end, { desc = "DAP clear breakpoints" })
         vim.keymap.set("n", "<leader>%", function()
             dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-        end)
+        end, { desc = "DAP set breakpoint" })
         vim.keymap.set("n", "<leader>?", function()
             -- Eval val under cursor (taken from tjdevries)
             dapui.eval(nil, { enter = true })
-        end)
+        end, { desc = "DAP eval val under cursor (taken from tjdevries)" })
         -- Debug session
         vim.keymap.set("n", "<leader>*", function()
             dap.terminate()
-        end)
+        end, { desc = "DAP terminate" })
         vim.keymap.set("n", "<leader>&", function()
             dap.restart()
-        end)
+        end, { desc = "DAP restart" })
 
 
         -- TODO: Make into cmd commands

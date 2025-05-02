@@ -2,35 +2,36 @@
 return {
     "folke/zen-mode.nvim",
     config = function()
+        local zen = require("zen-mode")
         vim.keymap.set("n", "<leader>zz", function()
-            require("zen-mode").setup {
+            zen.setup {
                 window = {
                     width = 90,
                     options = { }
                 },
             }
-            require("zen-mode").toggle()
+            zen.toggle()
             -- vim.wo.wrap = false
             vim.wo.number = true
             vim.wo.rnu = true
             ColorMyPencils()
-        end, { desc = "Shallow Zen"})
+        end, { desc = "Zen Shallow"})
 
 
         vim.keymap.set("n", "<leader>zZ", function()
-            require("zen-mode").setup {
+            zen.setup {
                 window = {
                     width = 80,
                     options = { }
                 },
             }
-            require("zen-mode").toggle()
+            zen.toggle()
             -- vim.wo.wrap = false
             vim.wo.number = false
             vim.wo.rnu = false
             vim.opt.colorcolumn = "0"
             ColorMyPencils()
-        end, { desc = "Deep Zen"})
+        end, { desc = "Zen Deep"})
     end
 }
 

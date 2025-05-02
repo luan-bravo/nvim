@@ -24,7 +24,7 @@ return {
 
             vim.keymap.set("n", "<leader>tc", function()
                 neotest.run.run()
-            end)
+            end, { desc = "Neotest run" })
         end,
     },
 }
