@@ -38,5 +38,10 @@ return {
         vim.keymap.set("n", "<leader>pm", builtin.marks, { desc = "Telescope marks" })
         vim.keymap.set("n", "<leader>pr", builtin.registers, { desc = "Telescope registers" })
         vim.keymap.set("n", "<leader>pk", builtin.keymaps, { desc = "Telescope keymaps" })
+        vim.keymap.set("n", "<leader>pj", builtin.jumplist, { desc = "Telescope jump list" })
+        vim.keymap.set("x", "<leader>ps", function ()
+            vim.cmd([[exe "norm! \<esc>gv\"zy"]])
+            builtin.grep_string({ search = vim.fn.getreg("z") })
+        end, { desc = "Telescope grep selection"})
     end
 }
