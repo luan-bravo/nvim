@@ -8,6 +8,17 @@ return {
     },
 
     config = function()
+        local actions = require("telescope.actions")
+        require('telescope').setup({
+            defaults = {
+                mappings = {
+                    i = {
+                        ["<C-u>"] = actions.cycle_history_prev,
+                        ["<C-d>"] = actions.cycle_history_next,
+                    }
+                }
+            }
+        })
         local builtin = require("telescope.builtin")
 
         vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Telescope find files" })
