@@ -99,8 +99,7 @@ vim.keymap.set("n", "<leader>fa", function()
     vim.fn.search("[a-zA-Z0-9]", "c", vim.fn.line("."))
 end, { noremap=true, silent=true, desc = "Go to first alphanulmeric character" })
 
--- Toggle Vexplore
-local function toggle_vexplore()
+vim.keymap.set('n', '<leader>e', function ()
     local netrw_found = false
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         local buf = vim.api.nvim_win_get_buf(win)
