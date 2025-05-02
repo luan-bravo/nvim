@@ -20,7 +20,7 @@ return {
         end, { desc = "Telescope grep cword" })
 
         vim.keymap.set("n", "<leader>pWs", function()
-            local word  vim.fn.expand("<cWORD>")
+            local word = vim.fn.expand("<cWORD>")
             builtin.grep_string({ search = word })
         end, { desc = "Telescope grep cWORD" })
 
