@@ -29,11 +29,9 @@ return {
         end, { desc = "Telescope grep string" })
         vim.keymap.set("n", "<leader>vh", builtin.help_tags, { desc = "Telescope help tags" })
 
-        -- TODO: grep_string ({ search = <virtual> })
-
-
-        -- TODO: change the following for a decent function
-        -- vim.keymap.set("n", "<leader>pt", builtin.telescope, { desc = "Telescope in command line" })
+        -- TODO: change the following key map for a decent function
+            -- maybe:
+                -- vim.keymap.set("n", "<leader>pt", builtin.telescope, { desc = "Telescope in command line" })
         vim.keymap.set("n", "<leader>pp", ":Telescope<cr>", { desc = "Telescope in command line" })
         vim.keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "Telescope live grep" })
         vim.keymap.set("n", "<leader>pcb", builtin.current_buffer_fuzzy_find, { desc = "Telescope current buffer fuzzy find" })
@@ -42,4 +40,3 @@ return {
         vim.keymap.set("n", "<leader>pk", builtin.keymaps, { desc = "Telescope keymaps" })
     end
 }
-
