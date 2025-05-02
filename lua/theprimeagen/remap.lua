@@ -21,7 +21,8 @@ end)
 --]]
 
 -- greatest remap ever
-vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Delete to void and Paste" })
+-- TODO: fix "conflict" with Telescope key maps
+vim.keymap.set("x", "<leader>dp", [["_dP]], { desc = "Delete to void and Paste" })
 
 vim.keymap.set({ "n", "v" }, "<leader>P", [["+p]], { desc = "Past from clipboard" })
 -- next greatest remap ever : asbjornHaland
