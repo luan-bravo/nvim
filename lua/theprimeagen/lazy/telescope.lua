@@ -27,12 +27,10 @@ return {
         vim.keymap.set("n", "<leader>ps", function()
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end, { desc = "Telescope grep string" })
+        vim.keymap.set("n", "<leader>vh", builtin.help_tags, { desc = "Telescope help tags" })
 
         -- TODO: grep_string ({ search = <virtual> })
 
-        vim.keymap.set("n", "<leader>vh",
-            builtin.help_tags,
-       { desc = "Telescope help tags" })
 
         -- TODO: change the following for a decent function
         -- vim.keymap.set("n", "<leader>pt", builtin.telescope, { desc = "Telescope in command line" })
