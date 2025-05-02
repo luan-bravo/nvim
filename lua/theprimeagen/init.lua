@@ -33,7 +33,20 @@ autocmd('TextYankPost', {
 autocmd({"BufWritePre"}, {
     group = ThePrimeagenGroup,
     pattern = "*",
-    command = [[%s/\s\+$//e]],
+    callback = function(e)
+        local skip_ft = {
+            gitcommit = true,
+            gitrebase = true,
+            diff = true,
+        }
+        local ft = vim.bo[e.buf].filetype
+        if skip_ft[ft] or vim.wo.diff then
+            return
+        end
+        vim.cmd([[%s/\s\+$//e]])
+        vim.cmd([[normal! mzggVG=`z]])
+    end,
+    desc = "Pre writing buffer formating"
 })
 
 autocmd('LspAttach', {

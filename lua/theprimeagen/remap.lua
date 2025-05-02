@@ -139,3 +139,5 @@ vim.keymap.set("v", "<leader>.>", [[:s/^\(\s\+\)/\1\1/<CR>]], { desc = "Double i
 vim.keymap.set("v", "<leader>.<", [[:s/^\(\s\+\)\1/\1/<CR>]], { desc = "Half indentation" })
 
 vim.keymap.set("n", "z/",[[:exe ':spellrare! ' .. expand('<cWORD>')<CR>)]], { noremap = true, desc = "Add rare spelling to file", })
+
+vim.keymap.set("n", "<leader>=", "mzggVG=`z", {desc = "Fix buffer indentation"})
