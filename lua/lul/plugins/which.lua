@@ -14,7 +14,7 @@ return {
         triggers = {
             { "<C-w>",  mode = { "n", "v" } },
             { "<leader>p",  mode = { "n", "v" } },
-            { "<leader>,",  mode = { "n", "v" } },
+            { "S",  mode = { "n", "v" } },
             { "<leader>.",  mode = { "n", "v" } },
             { "<leader><leader>",  mode = { "n", "v" } },
             { "\"",  mode = { "n", "v" } },
