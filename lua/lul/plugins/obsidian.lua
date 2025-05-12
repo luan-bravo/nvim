@@ -21,6 +21,7 @@ return {
                 { name = "personal", path = "~/notes/personal", },
                 { name = "classes", path = "~/notes/classes", },
                 { name = "studies", path = "~/notes/studies", },
+                { name = "todos", path = "~/notes/todos", },
             },
             -- ui = {
             --     enable = true,
