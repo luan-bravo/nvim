@@ -6,6 +6,7 @@ function EditOnNewTab(path)
 
     local tree_status, _ = pcall(require, "nvim-tree")
     if tree_status then
+        -- TODO: Make it open full screen to not open in a Vsplit and also create a empty buffer
         vim.cmd("NvimTreeOpen")
     else
         vim.cmd("Explore")

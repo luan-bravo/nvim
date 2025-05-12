@@ -17,6 +17,7 @@ return {
                 lualine_a = { recording_register, "mode" },
                 lualine_b = { "branch", "diff" },
                 -- TODO: Display ongoing unfinished key combos
+                -- lualine_c = { "filename", "showcmd", }, <- did not work
                 lualine_c = { "filename", },
                 lualine_x = { "encoding", "fileformat", "filetype" },
                 lualine_y = { "progress" },
