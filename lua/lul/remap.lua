@@ -20,8 +20,9 @@ km({ "n","v" }, "Q", "<nop>")
 -- TODO: Fix keyboard config with ZSH and whatever else I'll be using to fix these key maps
 -- km("i", "<S-BS>", "<C-w>")
 -- km("i", "<S-Del>", "<C-o>dw")
-km("i", "<C-BS>", "<C-w>")
-km("i", "<C-Del>", "<C-o>dw")
+km("i", "<C-BS>", "<C-w>", { desc = "Delete previous word" })
+km("i", "<C-Del>", "<C-o>dw", { desc = "Delete next word" })
+km("n", "<S-F10>", "z=", { desc = "Correct spelling alias" })
 
 ------------------------------
 -- Buffer/File Manipulation --
