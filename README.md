@@ -30,6 +30,10 @@
 - [!] Folds
     - Many commands starting with `z`
     - There must be an easier way to get it to work with LSP based folding
+- [x] Spell checker
+    - [x] Add to *my Dict*
+        - [x] *My Dict* file path setting
+            - Not really necessary, the default is good
     - [ ] Ignore once
     - [x] Ignore always
         - Just add as `spellgood` or `spellrare` (`z/` created map map) to add to *dict*
@@ -57,9 +61,5 @@
 - [x] `cword` and `cWORD`
     - Like `w`  and `W`, but as vars that can be expanded (with `expand()` or `vim.fn.expand()`)
 - [x] Nicer gruvier **status line** (again)
-- [x] Spell checker
-    - [x] Add to *my dict*
-        - [x] *My dict* file path setting
-    - [ ] Not really necessary, the default is good
 - [x] Figure what do those `nvim-tree`'s icons (the non file type ones)
     - Those were git status icons. Already configured them with (what I think are) better icons
