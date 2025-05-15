@@ -7,7 +7,7 @@ return {
         ts_configs.setup({
             -- A list of parser names, or "all"
             ensure_installed = {
-                "c", "cpp", "lua", "rust", "zig", "markdown", "go", "java", "kotlin",
+                "c", "cpp", "lua", "rust", "zig", "markdown", "go", "java", "kotlin", "python",
                 "javascript", "typescript", "css", "html",
                 "bash", "nix",
                 "toml", "yaml", "json", "xml",
