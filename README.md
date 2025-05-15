@@ -11,23 +11,22 @@
 ### Add:
 - [!] Add ongoing key combo to show in [lualine]() since [noice]() removed the command line
 - [ ] `*_thing` Asterisks completion like ZSH on completions suggestions
-    - [ ] (At first char of previously typed WORD) `_thing` -> `this_thing` fix insert mode completion for 
-- [ ] Extend default dictionary of English on neovim spell checker
+    - [ ] At first char of previously typed WORD: `_thing` -> `this_thing` fix insert mode completion for 
+- [ ] Extend default dictionary of English on neovim spell checker (future me: wtf did I mean by this? just add the grammar checker)
     - [ ] [Add] grammar checker too
 
 ### Fix:
 - [!] Refactor surround keymaps
-- [ ] Fix markdown note taking in nvim to ditch the [Obsidian App]()
+- [!] Fix markdown note taking in nvim to ditch the [Obsidian App]()
     - [ ] Fix [render-md.lua](./lua/theprimeagen/unused/render-md.lua) first
     - [ ] Really badly figure transclusion for any file type with quoting from line slice or maybe even LSP assisted stuff?
+- [!] Set `cmp` to always show all possible options for completion on suggestions, not only with `<C-Enter>`
+- [!] Make buffers always tab specific (or at least on edit `edit_project` calls)
 - [ ] Make man and help open as vsplit if only one buffer showing, else hsplit 
-- [ ] Make buffers always tab specific (or at least on edit `edit_project` calls)
 - [ ] Fix encoding difference when copy-pasting from vim to somewhere else (Windows issue?)
-- [ ] Set `cmp` to always show all possible options for completion on suggestions, not only with `<C-Enter>`
 
 ### Study:
-- [ ] Changes
-- [ ] Lists
+- [!] Look further for a `cselect` thing like `cword`
 - [!] Folds
     - Many commands starting with `z`
     - There must be an easier way to get it to work with LSP based folding
@@ -35,13 +34,14 @@
     - [x] Ignore always
         - Just add as `spellgood` or `spellrare` (`z/` created map map) to add to *dict*
         - Also `zw` adds as `spellwrong`
+- [ ] Changes
+- [ ] Lists
 - [ ] Other modes (e.g. `x`)
     - `x` -> Non-block visual modes
     - `t` -> Terminal mode
     - what other ones don't I know about?
 - [ ] Fugitive
     - [ ] Solve some rebase conflicts and push and pull some commits as practice
-- [!] Look further for a `cselect` thing like `cword`
 
 
 ## Done
