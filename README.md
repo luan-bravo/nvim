@@ -63,3 +63,6 @@
 - [x] Nicer gruvier **status line** (again)
 - [x] Figure what do those `nvim-tree`'s icons (the non file type ones)
     - Those were git status icons. Already configured them with (what I think are) better icons
+
+
+- [ ] \<S-Enter> to open file on nvim-tree and close tree
