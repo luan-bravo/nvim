@@ -55,3 +55,4 @@ vim.opt.showcmd = true
 
 vim.opt.report = 30
 
+vim.opt.laststatus = 3

@@ -5,6 +5,7 @@ return {
         "theHamsta/nvim-dap-virtual-text",
         "nvim-telescope/telescope-dap.nvim",
         "williamboman/mason.nvim",
+        -- "mason-org/mason.nvim",
         "jay-babu/mason-nvim-dap.nvim",
     },
     config = function()
@@ -62,88 +63,46 @@ return {
 
         local mr_status_ok, mason_registry = pcall(require, "mason-registry")
         if not mr_status_ok then return end
-        local codelldb = mason_registry.get_package("codelldb")
-        local codelldb_path = codelldb:get_install_path() .. "/extension/adapter/codelldb"
 
-        -- Custom breakpoint sign
+        local augroup = vim.api.nvim_create_augroup
+        local autocmd = vim.api.nvim_create_autocmd
 
-        dap.adapters.codelldb = {
-            type = "server",
-            port = "${port}",
-            executable = {
-                command = codelldb_path,
-                args = {
-                    "--port", "${port}",
+        local CDapGroup = augroup('DapCodeLLDB', { clear = true })
+        autocmd('FileType', {
+            group = CDapGroup,
+            pattern = { "c", "cpp", "cc" },
+            callback = function()
+                local codelldb = mason_registry.get_package("codelldb")
+                local codelldb_adapter = vim.fn.expand "$MASON/packages/codelldb/extension/adapter/codelldb"
+
+                -- Custom breakpoint sign
+
+                dap.adapters.codelldb = {
+                    type = "server",
+                    port = "${port}",
+                    executable = {
+                        command = codelldb_adapter,
+                        args = {
+                            "--port", "${port}",
+                        }
+                    }
                 }
-            }
-        }
 
-        dap.configurations.c = {
-            {
-                name = "Launch file",
-                type = "codelldb",
-                request = "launch",
-                program = function()
-                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                end,
-                cwd = "${workspaceFolder}",
-                stopOnEntry = false,
-                args = {},
-            },
-        }
-
-        --[[
-            dap.adapters.c = {
-            type = "executable",
-            command = "codelldb",
-            name = "lldb"
-            }
-            ]]
-
-        -- TODO: Actually set these up later and for js/ts
-        --[[
-            dap.configurations.cpp = dap.configurations.c
-            dap.configurations.zig = dap.configurations.c
-            dap.adapters.cpp = dap.adapters.c
-            dap.adapters.zig = dap.adapters.c
-            dap.adapters.rust = dap.adapters.c
-            dap.configurations.rust = {
-            {
-            name = "Launch",
-            type = "rust",
-            request = "launch",
-            program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
-            end,
-            cwd = "${workspaceFolder}",
-            stopOnEntry = false,
-            args = {},
-            },
-            }
-            dap.adapters.go = {
-            type = "server",
-            port = "${port}",
-            executable = {
-            command = "dlv",
-            args = { "dap", "-l", "127.0.0.1:${port}" },
-            }
-            }
-            dap.configurations.go = {
-            {
-            type = "go",
-            name = "Debug",
-            request = "launch",
-            program = "${file}",
-            },
-            {
-            type = "go",
-            name = "Debug Test",
-            request = "launch",
-            mode = "test",
-            program = "${file}",
-            },
-            }
-            ]]
+                dap.configurations.c = {
+                    {
+                        name = "Launch file",
+                        type = "codelldb",
+                        request = "launch",
+                        program = function()
+                            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                        end,
+                        cwd = "${workspaceFolder}",
+                        stopOnEntry = false,
+                        args = {},
+                    },
+                }
+            end
+        })
 
         vim.fn.sign_define("DapBreakpoint", {
             text = "🔴",
@@ -180,11 +139,13 @@ return {
         end, { desc = "DAP restart" })
 
 
-        -- TODO: Make into cmd commands
+        -- TODO: Make into `vim.cmd` commands
         -- -- Telescope integration
         local t_status_ok, telescope = pcall(require, "telescope")
         telescope.load_extension("dap")
-        if not t_status_ok then return end
+        if not t_status_ok then
+            return
+        end
         vim.keymap.set("n", "<leader>pdc", "<cmd>Telescope dap commands<CR>", { desc = "DAP Commands" })
         vim.keymap.set("n", "<leader>pdb", "<cmd>Telescope dap list_breakpoints<CR>", { desc = "DAP Breakpoint" })
         vim.keymap.set("n", "<leader>pdv", "<cmd>Telescope dap variables<CR>", { desc = "DAP Variables" })
