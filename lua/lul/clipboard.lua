@@ -16,16 +16,38 @@ if is_wsl or is_windows then
         cache_enabled = 0,
     }
 elseif is_linux then
-    vim.g.clipboard = {
-        name = "xclip",
-        copy = {
-            ["+"] = "xclip -selection clipboard",
-            ["*"] = "xclip -selection primary",
-        },
-        paste = {
-            ["+"] = "xclip -selection clipboard -o",
-            ["*"] = "xclip -selection primary -o",
-        },
-        cache_enabled = 0,
-    }
+    if vim.fn.executable("xclip") == 1 then
+        vim.g.clipboard = {
+            name = "xclip",
+            copy = {
+                ["+"] = "xclip -selection clipboard",
+                ["*"] = "xclip -selection primary",
+            },
+            paste = {
+                ["+"] = "xclip -selection clipboard -o",
+                ["*"] = "xclip -selection primary -o",
+            },
+            cache_enabled = 0,
+        }
+    elseif vim.fn.executable("cliphist") == 1 then
+        vim.g.clipboard = {
+            name = "cliphist",
+            copy = {
+                ["+"] = "cliphist copy",
+                ["*"] = "cliphist copy",
+            },
+            paste = {
+                ["+"] = "cliphist decode | head -n 1",
+                ["*"] = "cliphist decode | head -n 1",
+            },
+            cache_enabled = 0,
+        }
+    else
+        vim.g.clipboard = {
+            name = "none",
+            copy = { ["+"] = "", ["*"] = "" },
+            paste = { ["+"] = "", ["*"] = "" },
+            cache_enabled = 0,
+        }
+    end
 end
