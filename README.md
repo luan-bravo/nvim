@@ -22,6 +22,7 @@
     - [ ] Really badly figure transclusion for any file type with quoting from line slice or maybe even LSP assisted stuff?
 - [!] Set `cmp` to always show all possible options for completion on suggestions, not only with `<C-Enter>`
 - [!] Make buffers always tab specific (or at least on edit `edit_project` calls)
+- [ ] Fix DAP so that it works with mason or local install (at least the error message is gone)
 - [ ] Make man and help open as vsplit if only one buffer showing, else hsplit 
 - [ ] Fix encoding difference when copy-pasting from vim to somewhere else (Windows issue?)
 
