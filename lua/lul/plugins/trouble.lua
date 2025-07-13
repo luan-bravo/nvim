@@ -5,7 +5,7 @@ return {
             local trb_status_ok, trouble = pcall(require, "trouble")
             if not trb_status_ok then return end
             trouble.setup({
-                icons = false,
+                icons = true,
             })
             vim.keymap.set("n", "<leader>tt", function()
                 trouble.toggle()
