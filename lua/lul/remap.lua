@@ -186,3 +186,6 @@ km("v", "Si", "di__<esc>P", { desc = "Surround w/ __" })
 km("v", "Sb", "di****<esc>hP", { desc = "Surround w/ ****" })
 km("v", "SI", "di_****_esc>hhP", { desc = "Surround w/ _****_" })
 km("v", "SB", "di_****_esc>hhP", { desc = "Surround w/ _****_" })
+
+km("v", "<leader>r", [[y:s/<C-r>"//g<Left><Left>]], { desc = "Replace selection in lines", noremap = true })
+km("v", "<leader>R", [[y:%s/<C-r>"//g<Left><Left>]], { desc = "Replace selection in file", noremap = true })
