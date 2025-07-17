@@ -30,7 +30,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.list = true
-vim.opt.listchars:append("space:⠂") -- \uec07
+-- vim.opt.listchars:append("space:⠂") -- \uec07
 vim.opt.listchars:append("eol:") -- \ue621
 
 vim.g.netrw_browse_split = 0
