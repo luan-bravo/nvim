@@ -59,52 +59,38 @@ return {
         end
 
 
+
         local mr_status_ok, mason_registry = pcall(require, "mason-registry")
         if not mr_status_ok then return end
-        -- Redo (go down undotree)
-        vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
-            group = lul,
-            pattern = "*",
-            callback = function()
-                local mason_codelldb = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb"
-                local system_codelldb = vim.fn.exepath("codelldb")
+        local codelldb = mason_registry.get_package("codelldb")
+        local codelldb_path = codelldb:get_install_path() .. "/extension/adapter/codelldb"
 
-                if vim.loop.fs_stat(mason_codelldb) then
-                    codelldb_path = mason_codelldb
-                elseif system_codelldb ~= "" then
-                    codelldb_path = system_codelldb
-                else
-                    vim.notify("[dap] Could not find codelldb adapter", vim.log.levels.ERROR)
-                    codelldb_path = nil
-                end
+        -- Custom breakpoint sign
 
-                dap.adapters.codelldb = {
-                    type = "server",
-                    port = "${port}",
-                    executable = {
-                        command = codelldb_path,
-                        args = {
-                            "--port", "${port}",
-                        }
-                    }
+        dap.adapters.codelldb = {
+            type = "server",
+            port = "${port}",
+            executable = {
+                command = codelldb_path,
+                args = {
+                    "--port", "${port}",
                 }
+            }
+        }
 
-                dap.configurations.c = {
-                    {
-                        name = "Launch file",
-                        type = "codelldb",
-                        request = "launch",
-                        program = function()
-                            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                        end,
-                        cwd = "${workspaceFolder}",
-                        stopOnEntry = false,
-                        args = {},
-                    },
-                }
-            end,
-        })
-
+        dap.configurations.c = {
+            {
+                name = "Launch file",
+                type = "codelldb",
+                request = "launch",
+                program = function()
+                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                end,
+                cwd = "${workspaceFolder}",
+                stopOnEntry = false,
+                args = {},
+            },
+        }
 
         --[[
             dap.adapters.c = {

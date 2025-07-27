@@ -61,4 +61,4 @@ elseif is_linux then
         }
     end
 end
-print("Current Clipboard: " .. vim.g.clipboard.name)
+-- print("Current Clipboard: " .. vim.g.clipboard.name)
