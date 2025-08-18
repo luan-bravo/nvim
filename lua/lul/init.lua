@@ -1,32 +1,16 @@
-local set_ok, _ = pcall(require, "lul.set")
-if not set_ok then
-    vim.notify("Failed to require 'lul.set'", vim.log.levels.ERROR)
+local function safe_require(module)
+    local ok, _ = pcall(require, module)
+    if not ok then
+        vim.notify("Failed to require '" .. module .. "'", vim.log.levels.ERROR)
+    end
 end
 
-local remap_ok, _ = pcall(require, "lul.remap")
-if not remap_ok then
-    vim.notify("Failed to require 'lul.remap'", vim.log.levels.ERROR)
-end
-
-local lazy_ok, _ = pcall(require, "lul.lazy")
-if not lazy_ok then
-    vim.notify("Failed to require 'lul.lazy'", vim.log.levels.ERROR)
-end
-
-local functions_ok, _ = pcall(require, "lul.functions")
-if not functions_ok then
-    vim.notify("Failed to require 'lul.functions'", vim.log.levels.ERROR)
-end
-
-local autocmd_ok, _ = pcall(require, "lul.autocmd")
-if not autocmd_ok then
-    vim.notify("Failed to require 'lul.autocmd'", vim.log.levels.ERROR)
-end
-
-local clipboard_ok, _ = pcall(require, "lul.clipboard")
-if not clipboard_ok then
-    vim.notify("Failed to require 'lul.clipboard'", vim.log.levels.ERROR)
-end
+safe_require("lul.set")
+safe_require("lul.remap")
+safe_require("lul.lazy")
+safe_require("lul.functions")
+safe_require("lul.autocmd")
+safe_require("lul.clipboard")
 
 
 function R(name)
