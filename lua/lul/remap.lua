@@ -5,23 +5,29 @@ local km = vim.keymap.set
 -- Moves/Basics --
 ------------------
 km("n", "J", "mzJ`z", { desc = "Join line w/o moving cursor" })
+
 -- km({ "n","i","v" }, "<C-d>", "<C-d>zz")
 -- km({ "n","i","v" }, "<C-u>", "<C-u>zz")
 -- km({ "n","i","v" }, "<PageUp>", "<PageUp>zz")
 -- km({ "n","i","v" }, "<PageDown>", "<PageDown>zz")
---
+
 -- km({ "n","v" }, "n", "nzzzv")
 -- km({ "n","v" }, "N", "Nzzzv")
 -- km({ "n","v" }, "{", function () vim.cmd("normal! {zz") end)
 -- km({ "n","v" }, "}", function () vim.cmd("normal! }zz") end)
+
 -- This is going to get me canceled
 km({ "n","i","v" }, "<C-c>", "<Esc>", { desc = "Escape" })
+
 km({ "n","v" }, "Q", "<nop>")
+
 -- TODO: Fix keyboard config with ZSH and whatever else I'll be using to fix these key maps
 -- km("i", "<S-BS>", "<C-w>")
 -- km("i", "<S-Del>", "<C-o>dw")
+
 km("i", "<C-BS>", "<C-w>", { desc = "Delete previous word" })
 km("i", "<C-Del>", "<C-o>dw", { desc = "Delete next word" })
+
 km("n", "<S-F10>", "z=", { desc = "Correct spelling alias" })
 
 ------------------------------
@@ -29,8 +35,11 @@ km("n", "<S-F10>", "z=", { desc = "Correct spelling alias" })
 ------------------------------
 km("n", "<leader>w", function() vim.cmd("w") end, { desc = "Write" } )
 km("n", "<leader>W", function() vim.cmd("wall") end, { desc = "Write All" })
+
 km("n", "<leader>q", function() vim.cmd("quit") end, { desc = "Quit" })
 km("n", "<leader>Q", function() vim.cmd("quit!") end, { desc = "Quit!" })
+km("n", "<C-q>", function() vim.cmd("quitall!") end, { desc = "Quit!" })
+
 km("n", "<leader>x", function() vim.cmd("bdelete") end, { desc = "Buffer Delete" })
 km("n", "<leader>X", function() vim.cmd("bdelete!") end, { desc = "Buffer Delete!" })
 km("n", "<leader>h", function() vim.cmd("bprevious") end, { desc = "Buffer Previous" })
@@ -94,6 +103,7 @@ km({ "n", "v" }, "<leader>D", [["_d]], { desc = "Delete to void" })
 km({ "n", "v" }, "<leader>d", [["+d]], { desc = "Delete to clipboard" })
 -- greatest remap ever
 km("x", "<leader>dp", [["_dP]], { desc = "Delete to void and Paste" })
+km("v", "<leader><C-Y>", [[ggVG"+y:q]], { desc = "Copy buffer to cliboard and quit", noremap = true })
 
 
 ----------------------
@@ -187,5 +197,8 @@ km("v", "Sb", "di****<esc>hP", { desc = "Surround w/ ****" })
 km("v", "SI", "di_****_esc>hhP", { desc = "Surround w/ _****_" })
 km("v", "SB", "di_****_esc>hhP", { desc = "Surround w/ _****_" })
 
+--------------
+-- Easy SEd --
+--------------
 km("v", "<leader>r", [[y:s/<C-r>"//g<Left><Left>]], { desc = "Replace selection in lines", noremap = true })
 km("v", "<leader>R", [[y:%s/<C-r>"//g<Left><Left>]], { desc = "Replace selection in file", noremap = true })
