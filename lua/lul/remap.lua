@@ -49,10 +49,14 @@ km("n", "<leader>l", function() vim.cmd("bnext") end, { desc = "Buffer Next" })
 ----------------
 -- Formatting --
 ----------------
+km("n", "<leader>=", "mzggVG=`z", { silent = true, desc = "Fix buffer indentation" })
+
 km("n", "<leader>.w", function() vim.o.wrap = not vim.o.wrap end, { desc = "Wrap toggle" })
+km("n", "<leader>.l", function () vim.cmd("LspStop") end, { desc = "LSP toggle" })
+
 km("v", "<leader>.>", [[:s/^\(\s\+\)/\1\1/<CR>]], { desc = "Double indentation" })
 km("v", "<leader>.<", [[:s/^\(\s\+\)\1/\1/<CR>]], { desc = "Half indentation" })
-km("n", "<leader>=", "mzggVG=`z", { silent = true, desc = "Fix buffer indentation" })
+
 km("n", "<leader>.f", function() NonLspFormat() end, { silent = true, desc = "Format buffer minimally" })
 km("n", "<leader>.F", function()
     NonLspFormat()
