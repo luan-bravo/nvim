@@ -16,14 +16,14 @@ return {
             gruvbox.setup({
                 terminal_colors = true, -- add neovim terminal colors
                 undercurl = true,
-                underline = false,
+                underline = true,
                 bold = true,
                 italic = {
                     strings = false,
-                    emphasis = false,
-                    comments = false,
+                    emphasis = true,
+                    comments = true,
                     operators = false,
-                    folds = false,
+                    folds = true,
                 },
                 strikethrough = true,
                 invert_selection = false,
