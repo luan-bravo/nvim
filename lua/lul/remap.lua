@@ -113,23 +113,6 @@ km("v", "<leader><C-Y>", [[ggVG"+y:q]], { desc = "Copy buffer to cliboard and qu
 ----------------------
 -- Custom Functions --
 ----------------------
--- Vertical Explore w/ netrw
-local api_status_ok, _ = pcall(require, "nvim-tree.api")
-if not api_status_ok then
-    km("n", "<leader>e", function ()
-        local netrw_found = false
-        for _, win in ipairs(vim.api.nvim_list_wins()) do
-            if vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(win), 'filetype') == 'netrw' then
-                netrw_found = true
-                vim.api.nvim_win_close(win, true)
-                break
-            end
-        end
-        if not netrw_found then
-            vim.cmd('Vexplore')
-        end
-    end, { silent = true, desc = "Toggle Vexplore"})
-end
 -- Track the messages buffer number
 km("n", "<leader>msg", function()
     local messages_bufnr = nil

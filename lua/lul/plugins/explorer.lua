@@ -7,6 +7,8 @@ return {
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
         config = function ()
+            vim.keymap.set("n", "<leader>e", function() vim.cmd("Oil") end, { silent = true, desc = "Toggle Vexplore"})
+
             local oil_ok, oil = pcall(require, "oil")
             if not oil_ok then return end
             oil.setup({
@@ -204,102 +206,119 @@ return {
                 },
             })
         end
+
     },
-    {
-        -- "nvim-tree/nvim-tree.lua",
-        -- version = "*",
-        -- event = "VeryLazy",
-        -- dependencies = { "nvim-tree/nvim-web-devicons" },
-        -- config = function()
-        --     vim.g.loaded_netrw = 1
-        --     vim.g.loaded_netrwPlugin = 1
-        --     local nt_status_ok, tree = pcall(require, "nvim-tree")
-        --     if not nt_status_ok then return end
-        --     tree.setup({
-        --         auto_reload_on_write = true,
-        --         hijack_cursor = true,
-        --         hijack_netrw = true,
-        --         sort = {
-        --             sorter = "name",
-        --             folders_first = true,
-        --             files_first = false,
-        --         },
-        --         sync_root_with_cwd = true,
-        --         view = {
-        --             width = 30,
-        --             cursorline = true,
-        --             side = "left",
-        --             relativenumber = false,
-        --             signcolumn = "yes",
-        --         },
-        --         renderer = {
-        --             icons = {
-        --                 web_devicons = {
-        --                     file = {
-        --                         enable = true,
-        --                         color = true,
-        --                     },
-        --                     folder = {
-        --                         enable = true,
-        --                         color = true,
-        --                     },
-        --                 },
-        --                 glyphs = {
-        --                     default = "",
-        --                     symlink = "",
-        --                     bookmark = "󰆤",
-        --                     modified = "●",
-        --                     hidden = "󰜌",
-        --                     folder = {
-        --                         arrow_closed = "",
-        --                         arrow_open = "",
-        --                         default = "",
-        --                         open = "",
-        --                         empty = "",
-        --                         empty_open = "",
-        --                         symlink = "",
-        --                         symlink_open = "",
-        --                     },
-        --                     git = {
-        --                         unstaged = "", -- \uf006
-        --                         staged = "", -- \uf005
-        --                         unmerged = "",
-        --                         renamed = "➜",
-        --                         untracked = "", -- \uf29c
-        --                         deleted = "",
-        --                         ignored = "◌",
-        --                     },
-        --                 },
-        --             },
-        --             special_files = {
-        --                 "Cargo.toml",
-        --                 "Makefile",
-        --                 "README.md",
-        --                 "readme.md",
-        --             },
-        --             symlink_destination = true,
-        --         },
-        --         -- (?)
-        --         system_open = {
-        --             cmd = "",
-        --             args = {},
-        --         },
-        --         git = {
-        --             enable = true,
-        --             show_on_dirs = true,
-        --             show_on_open_dirs = true,
-        --             disable_for_dirs = {},
-        --             timeout = 400,
-        --             cygwin_support = false,
-        --         },
-        --         actions = {
-        --             use_system_clipboard = true,
-        --         },
-        --
-        --     })
-        --     local api_status_ok, api = pcall(require, "nvim-tree.api")
-        --     if not api_status_ok then return end
-        --     vim.keymap.set("n", "<leader>e", api.tree.toggle, { desc = "NvimTree toggle" })
-        -- end,
-    }
+    -- {
+    --     "nvim-tree/nvim-tree.lua",
+    --     version = "*",
+    --     event = "VeryLazy",
+    --     dependencies = { "nvim-tree/nvim-web-devicons" },
+    --     config = function()
+    --         vim.g.loaded_netrw = 1
+    --         vim.g.loaded_netrwPlugin = 1
+    --         local nt_status_ok, tree = pcall(require, "nvim-tree")
+    --         if not nt_status_ok then return end
+    --         tree.setup({
+    --             auto_reload_on_write = true,
+    --             hijack_cursor = true,
+    --             hijack_netrw = true,
+    --             sort = {
+    --                 sorter = "name",
+    --                 folders_first = true,
+    --                 files_first = false,
+    --             },
+    --             sync_root_with_cwd = true,
+    --             view = {
+    --                 width = 30,
+    --                 cursorline = true,
+    --                 side = "left",
+    --                 relativenumber = false,
+    --                 signcolumn = "yes",
+    --             },
+    --             renderer = {
+    --                 icons = {
+    --                     web_devicons = {
+    --                         file = {
+    --                             enable = true,
+    --                             color = true,
+    --                         },
+    --                         folder = {
+    --                             enable = true,
+    --                             color = true,
+    --                         },
+    --                     },
+    --                     glyphs = {
+    --                         default = "",
+    --                         symlink = "",
+    --                         bookmark = "󰆤",
+    --                         modified = "●",
+    --                         hidden = "󰜌",
+    --                         folder = {
+    --                             arrow_closed = "",
+    --                             arrow_open = "",
+    --                             default = "",
+    --                             open = "",
+    --                             empty = "",
+    --                             empty_open = "",
+    --                             symlink = "",
+    --                             symlink_open = "",
+    --                         },
+    --                         git = {
+    --                             unstaged = "", -- \uf006
+    --                             staged = "", -- \uf005
+    --                             unmerged = "",
+    --                             renamed = "➜",
+    --                             untracked = "", -- \uf29c
+    --                             deleted = "",
+    --                             ignored = "◌",
+    --                         },
+    --                     },
+    --                 },
+    --                 special_files = {
+    --                     "Cargo.toml",
+    --                     "Makefile",
+    --                     "README.md",
+    --                     "readme.md",
+    --                 },
+    --                 symlink_destination = true,
+    --             },
+    --             -- (?)
+    --             system_open = {
+    --                 cmd = "",
+    --                 args = {},
+    --             },
+    --             git = {
+    --                 enable = true,
+    --                 show_on_dirs = true,
+    --                 show_on_open_dirs = true,
+    --                 disable_for_dirs = {},
+    --                 timeout = 400,
+    --                 cygwin_support = false,
+    --             },
+    --             actions = {
+    --                 use_system_clipboard = true,
+    --             },
+    --
+    --         })
+    --         local api_status_ok, api = pcall(require, "nvim-tree.api")
+    --         if not api_status_ok then return end
+    --         Vertical Explore w/ netrw
+    --             local api_status_ok, _ = pcall(require, "nvim-tree.api")
+    --                 if not api_status_ok then
+    --                 km("n", "<leader>e", function ()
+    --                     local netrw_found = false
+    --                     for _, win in ipairs(vim.api.nvim_list_wins()) do
+    --                         if vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(win), 'filetype') == 'netrw' then
+    --                             netrw_found = true
+    --                             vim.api.nvim_win_close(win, true)
+    --                             break
+    --                         end
+    --                     end
+    --                     if not netrw_found then
+    --                         vim.cmd('Vexplore')
+    --                     end
+    --                 end, { silent = true, desc = "Toggle Vexplore"})
+    --         end
+    --     end,
+    -- }
 }
