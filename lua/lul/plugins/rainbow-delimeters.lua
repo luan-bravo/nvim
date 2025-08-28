@@ -3,8 +3,8 @@ return {
     dependencies = {"nvim-treesitter/nvim-treesitter"},
     config = function()
         -- This module contains a number of default definitions
-        local rd_status_ok, rainbow_delimiters = pcall(require,"rainbow-delimiters")
-        if not rd_status_ok then return end
+        local rd_ok, rainbow_delimiters = pcall(require,"rainbow-delimiters")
+        if not rd_ok then return end
 
         ---@type rainbow_delimiters.config
         vim.g.rainbow_delimiters = {

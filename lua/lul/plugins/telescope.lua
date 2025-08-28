@@ -5,10 +5,10 @@ return {
         "nvim-lua/plenary.nvim"
     },
     config = function()
-        local tele_status_ok, telescope = pcall(require, "telescope")
-        if not tele_status_ok then return end
-        local act_status_ok, actions = pcall(require, "telescope.actions")
-        if not act_status_ok then return end
+        local tele_ok, telescope = pcall(require, "telescope")
+        if not tele_ok then return end
+        local act_ok, actions = pcall(require, "telescope.actions")
+        if not act_ok then return end
         telescope.setup({
             defaults = {
                 mappings = {
@@ -23,8 +23,8 @@ return {
                 },
             }
         })
-        local blt_status_ok, builtin = pcall(require, "telescope.builtin")
-        if not blt_status_ok then return end
+        local blt_ok, builtin = pcall(require, "telescope.builtin")
+        if not blt_ok then return end
         vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Telescope find files" })
         vim.keymap.set("n", "<leader>pf", builtin.git_files, { desc = "Telescope git files" })
         vim.keymap.set("n", "<leader>pws", function()

@@ -11,8 +11,8 @@ return {
         name = "gruvbox",
         lazy = false,
         config = function()
-            local gb_status_ok, gruvbox = pcall(require, "gruvbox")
-            if not gb_status_ok then return end
+            local gb_ok, gruvbox = pcall(require, "gruvbox")
+            if not gb_ok then return end
             gruvbox.setup({
                 terminal_colors = true, -- add neovim terminal colors
                 undercurl = true,

@@ -7,8 +7,8 @@ return {
     -- ---@type render.md.UserConfig
     -- opts = {},
     -- config = function ()
-    --     local rmd_status_ok, rendermd = pcall(require, "render-markdown")
-    --         if not rmd_status_ok then return end
+    --     local rmd_ok, rendermd = pcall(require, "render-markdown")
+    --         if not rmd_ok then return end
     --     rendermd.setup({ })
     -- end
 }

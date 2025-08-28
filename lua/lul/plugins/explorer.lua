@@ -216,8 +216,8 @@ return {
     --     config = function()
     --         vim.g.loaded_netrw = 1
     --         vim.g.loaded_netrwPlugin = 1
-    --         local nt_status_ok, tree = pcall(require, "nvim-tree")
-    --         if not nt_status_ok then return end
+    --         local nt_ok, tree = pcall(require, "nvim-tree")
+    --         if not nt_ok then return end
     --         tree.setup({
     --             auto_reload_on_write = true,
     --             hijack_cursor = true,
@@ -300,11 +300,11 @@ return {
     --             },
     --
     --         })
-    --         local api_status_ok, api = pcall(require, "nvim-tree.api")
-    --         if not api_status_ok then return end
+    --         local api_ok, api = pcall(require, "nvim-tree.api")
+    --         if not api_ok then return end
     --         Vertical Explore w/ netrw
-    --             local api_status_ok, _ = pcall(require, "nvim-tree.api")
-    --                 if not api_status_ok then
+    --             local api_ok, _ = pcall(require, "nvim-tree.api")
+    --                 if not api_ok then
     --                 km("n", "<leader>e", function ()
     --                     local netrw_found = false
     --                     for _, win in ipairs(vim.api.nvim_list_wins()) do

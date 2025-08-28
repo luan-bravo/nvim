@@ -10,8 +10,8 @@ return {
         dependencies = { "rafamadriz/friendly-snippets" },
 
         config = function()
-            local ls_status_ok, luasnip = pcall(require, "luasnip")
-            if not ls_status_ok then return end
+            local ls_ok, luasnip = pcall(require, "luasnip")
+            if not ls_ok then return end
             luasnip.filetype_extend("javascript", { "jsdoc" })
 
             --- TODO: What is expand?

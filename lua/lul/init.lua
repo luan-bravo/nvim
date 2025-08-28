@@ -14,8 +14,8 @@ safe_require("lul.clipboard")
 
 
 function R(name)
-    local r_status_ok, reload = pcall(require, "plenary.reload")
-    if not r_status_ok then return end
+    local r_ok, reload = pcall(require, "plenary.reload")
+    if not r_ok then return end
     reload.reload_module(name)
 end
 

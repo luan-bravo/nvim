@@ -4,8 +4,8 @@ return {
     -- Notifications using mini and not notify
     dependencies = { "MunifTanjim/nui.nvim", "hrsh7th/nvim-cmp" },
     config = function()
-        local noi_status_ok, noice = pcall(require, "noice")
-        if not noi_status_ok then return end
+        local noi_ok, noice = pcall(require, "noice")
+        if not noi_ok then return end
         noice.setup({
             -- recommended configs
             lsp = {
@@ -61,8 +61,8 @@ return {
             },
         })
 
-        local t_status_ok, telescope = pcall(require, "telescope")
-        if not t_status_ok then return end
+        local t_ok, telescope = pcall(require, "telescope")
+        if not t_ok then return end
         telescope.load_extension("noice")
 
         vim.keymap.set("n", "<leader>pnc",function()

@@ -8,11 +8,11 @@ return {
         "jay-babu/mason-nvim-dap.nvim",
     },
     config = function()
-        local m_status_ok, mason = pcall(require, "mason")
-        if not m_status_ok then return end
+        local m_ok, mason = pcall(require, "mason")
+        if not m_ok then return end
         mason.setup()
-        local mnd_status_ok, mason_nvim_dap = pcall(require, "mason-nvim-dap")
-        if not mnd_status_ok then return end
+        local mnd_ok, mason_nvim_dap = pcall(require, "mason-nvim-dap")
+        if not mnd_ok then return end
         mason_nvim_dap.setup({
             ensure_installed = {
                 "codelldb",
@@ -20,12 +20,12 @@ return {
             automatic_setup = true,
         })
 
-        local d_status_ok, dap = pcall(require, "dap")
-        if not d_status_ok then return end
-        local dui_status_ok, dapui = pcall(require, "dapui")
-        if not dui_status_ok then return end
-        local dvt_status_ok, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
-        if not dvt_status_ok then return end
+        local d_ok, dap = pcall(require, "dap")
+        if not d_ok then return end
+        local dui_ok, dapui = pcall(require, "dapui")
+        if not dui_ok then return end
+        local dvt_ok, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
+        if not dvt_ok then return end
         dap_virtual_text.setup({
             -- This just tries to mitigate the chance that I leak tokens here. Probably won't stop it from happening...
             display_callback = function(variable)
@@ -211,9 +211,9 @@ return {
 
         -- TODO: Make into cmd commands
         -- -- Telescope integration
-        local t_status_ok, telescope = pcall(require, "telescope")
+        local t_ok, telescope = pcall(require, "telescope")
         telescope.load_extension("dap")
-        if not t_status_ok then return end
+        if not t_ok then return end
         vim.keymap.set("n", "<leader>pdc", "<cmd>Telescope dap commands<CR>", { desc = "DAP Commands" })
         vim.keymap.set("n", "<leader>pdb", "<cmd>Telescope dap list_breakpoints<CR>", { desc = "DAP Breakpoint" })
         vim.keymap.set("n", "<leader>pdv", "<cmd>Telescope dap variables<CR>", { desc = "DAP Variables" })

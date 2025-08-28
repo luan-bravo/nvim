@@ -85,13 +85,13 @@ km("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "tmux n
 km("n", "<leader>zig", "<cmd>LspRestart<CR>", { desc = "LSP Restart" })
 km("n", "<leader><leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "Make it Rain" });
 km("n", "<leader>vwm", function()
-    local vwm_status_ok, vwm = pcall(require, "vim-with-me")
-    if not vwm_status_ok then return end
+    local vwm_ok, vwm = pcall(require, "vim-with-me")
+    if not vwm_ok then return end
     vwm.StartVimWithMe()
 end, {desc = "VimWithMe start"})
 km("n", "<leader>svwm", function()
-    local vwm_status_ok, vwm = pcall(require, "vim-with-me")
-    if not vwm_status_ok then return end
+    local vwm_ok, vwm = pcall(require, "vim-with-me")
+    if not vwm_ok then return end
     vwm.StopVimWithMe()
 end, {desc = "VimWithMe stop"})
 
@@ -116,8 +116,8 @@ km("v", "<leader><C-Y>", [[ggVG"+y:q]], { desc = "Copy buffer to cliboard and qu
 -- Track the messages buffer number
 km("n", "<leader>msg", function()
     local messages_bufnr = nil
-    local noi_status_ok, _ = pcall(require, "noice")
-    if noi_status_ok then
+    local noi_ok, _ = pcall(require, "noice")
+    if noi_ok then
         vim.cmd.messages()
         -- TODO?: maybe also implement for mini? Not using it, not gonna do now
     else

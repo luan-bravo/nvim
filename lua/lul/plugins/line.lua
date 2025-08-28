@@ -3,8 +3,8 @@ return {
     event = "VeryLazy",
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
-        local lln_status_ok, lualine = pcall(require, "lualine")
-        if not lln_status_ok then return end
+        local lln_ok, lualine = pcall(require, "lualine")
+        if not lln_ok then return end
 
         local function recording_register()
             local reg = vim.fn.reg_recording()

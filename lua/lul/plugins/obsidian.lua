@@ -14,8 +14,8 @@ return {
     -- -- },
     -- opts = { },
     -- config = function()
-    --     local obs_status_ok, obsidian = pcall(require, "obsidian")
-    --     if not obs_status_ok then return end
+    --     local obs_ok, obsidian = pcall(require, "obsidian")
+    --     if not obs_ok then return end
     --     obsidian.setup({
     --         workspaces = {
     --             { name = "personal", path = "~/notes/personal/", },

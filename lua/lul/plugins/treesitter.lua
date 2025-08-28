@@ -2,8 +2,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-        local tsc_status_ok, ts_configs = pcall(require, "nvim-treesitter.configs")
-        if not tsc_status_ok then return end
+        local tsc_ok, ts_configs = pcall(require, "nvim-treesitter.configs")
+        if not tsc_ok then return end
         ts_configs.setup({
             -- A list of parser names, or "all"
             ensure_installed = {
@@ -30,8 +30,8 @@ return {
             },
         })
 
-        local tsp_status_ok, ts_parsers = pcall(require, "nvim-treesitter.parsers")
-        if not tsp_status_ok then return end
+        local tsp_ok, ts_parsers = pcall(require, "nvim-treesitter.parsers")
+        if not tsp_ok then return end
         ts_parsers.get_parser_configs()
         ts_parsers.templ = {
             install_info = {

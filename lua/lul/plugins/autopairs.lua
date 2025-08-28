@@ -3,8 +3,8 @@ return {
     config = function()
 
         -- Setup nvim-cmp.
-        local ap_status_ok, autopairs = pcall(require, "nvim-autopairs")
-        if not ap_status_ok then return end
+        local ap_ok, autopairs = pcall(require, "nvim-autopairs")
+        if not ap_ok then return end
 
         autopairs.setup({
             check_ts = true,
@@ -27,10 +27,10 @@ return {
             },
         })
 
-        local cnp_status_ok, autopairs_cmp = pcall(require, "nvim-autopairs.completion.cmp")
-        if not cnp_status_ok then return end
-        local cmp_status_ok, cmp = pcall(require, "cmp")
-        if not cmp_status_ok then return end
+        local cnp_ok, autopairs_cmp = pcall(require, "nvim-autopairs.completion.cmp")
+        if not cnp_ok then return end
+        local cmp_ok, cmp = pcall(require, "cmp")
+        if not cmp_ok then return end
         cmp.event:on("confirm_done", autopairs_cmp.on_confirm_done({ map_char = { tex = "" } }))
     end
 }

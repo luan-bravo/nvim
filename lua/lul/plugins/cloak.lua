@@ -1,8 +1,8 @@
 return {
     "laytan/cloak.nvim",
     config = function()
-        local clk_status_ok, cloak = pcall(require, "cloak")
-        if not clk_status_ok then return end
+        local clk_ok, cloak = pcall(require, "cloak")
+        if not clk_ok then return end
         cloak.setup({
             enabled = true,
             cloak_character = "*",

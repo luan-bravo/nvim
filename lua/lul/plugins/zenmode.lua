@@ -2,8 +2,8 @@
 return {
     "folke/zen-mode.nvim",
     config = function()
-        local zen_status_ok, zen = pcall(require, "zen-mode")
-        if not zen_status_ok then return end
+        local zen_ok, zen = pcall(require, "zen-mode")
+        if not zen_ok then return end
         vim.keymap.set("n", "<leader>zz", function()
             zen.setup {
                 window = {

@@ -2,8 +2,8 @@ return {
     {
         "folke/trouble.nvim",
         config = function()
-            local trb_status_ok, trouble = pcall(require, "trouble")
-            if not trb_status_ok then return end
+            local trb_ok, trouble = pcall(require, "trouble")
+            if not trb_ok then return end
             trouble.setup({
                 icons = true,
             })

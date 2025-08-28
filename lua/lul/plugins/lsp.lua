@@ -15,23 +15,23 @@ return {
 
     config = function()
         local cmp = require('cmp')
-        local cmp_status_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-        if not cmp_status_ok then return end
+        local cmp_ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+        if not cmp_ok then return end
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
 
-        local fg_status_ok, fidget = pcall(require, "fidget")
-        if not fg_status_ok then return end
+        local fg_ok, fidget = pcall(require, "fidget")
+        if not fg_ok then return end
         fidget.setup({})
-        local m_status_ok, mason = pcall(require, "mason")
-        if not m_status_ok then return end
+        local m_ok, mason = pcall(require, "mason")
+        if not m_ok then return end
         mason.setup()
-        local mlsp_status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-        if not mlsp_status_ok then return end
-        local lspc_status_ok, lspconfig = pcall(require, "lspconfig")
+        local mlsp_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+        if not mlsp_ok then return end
+        local lspc_ok, lspconfig = pcall(require, "lspconfig")
         mason_lspconfig.setup({
             ensure_installed = {
                 "lua_ls",
@@ -48,13 +48,13 @@ return {
 
             handlers = {
                 function(server_name) -- default handler (optional)
-                    if not lspc_status_ok then return end
+                    if not lspc_ok then return end
                     lspconfig[server_name].setup {
                         capabilities = capabilities
                     }
                 end,
                 zls = function()
-                    if not lspc_status_ok then return end
+                    if not lspc_ok then return end
                     lspconfig.zls.setup({
                         root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
                         settings = {
@@ -69,7 +69,7 @@ return {
                     vim.g.zig_fmt_autosave = 0
                 end,
                 ["lua_ls"] = function()
-                    if not lspc_status_ok then return end
+                    if not lspc_ok then return end
                     lspconfig.lua_ls.setup {
                         capabilities = capabilities,
                         settings = {
