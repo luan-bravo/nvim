@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.opt.guicursor = ""
 vim.opt.showtabline = 2
 

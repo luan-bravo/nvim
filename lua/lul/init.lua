@@ -6,7 +6,7 @@ function Safe_require(module)
 end
 
 Safe_require("lul.set")
-Safe_require("lul.remap")
+Safe_require("lul.keymaps.init")
 Safe_require("lul.lazy")
 Safe_require("lul.functions")
 Safe_require("lul.autocmd")
