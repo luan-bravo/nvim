@@ -4,6 +4,7 @@ function EditOnNewTab(path)
     vim.cmd("tabnew")
     vim.cmd("tcd " .. path)
 
+    -- TODO: figure why was this *here* and make it work with oil.nvim
     local tree_status, _ = pcall(require, "nvim-tree")
     if tree_status then
         -- TODO: Make it open full screen to not open in a Vsplit and also create a empty buffer
