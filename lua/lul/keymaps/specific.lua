@@ -15,4 +15,3 @@ vim.keymap.set("n", "<leader>svwm", function()
     if not vwm_ok then return end
     vwm.StopVimWithMe()
 end, {desc = "VimWithMe stop"})
-
