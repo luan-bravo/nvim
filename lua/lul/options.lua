@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
 vim.opt.guicursor = ""
-vim.opt.showtabline = 2
+vim.opt.showtabline = 1
 
 vim.opt.number = true
 vim.opt.relativenumber = true
