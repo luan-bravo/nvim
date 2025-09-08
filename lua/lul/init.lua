@@ -1,19 +1,17 @@
-function Safe_require(module)
+function SafeRequire(module)
     local ok, _ = pcall(require, module)
     if not ok then
         vim.notify("Failed to require '" .. module .. "'", vim.log.levels.ERROR)
     end
 end
 
-Safe_require("lul.options")
-Safe_require("lul.autocmd")
+SafeRequire("lul.options")
+SafeRequire("lul.autocmd")
+SafeRequire("lul.functions")
+SafeRequire("lul.keymaps.keymaps")
+SafeRequire("lul.lazy")
+SafeRequire("lul.clipboard")
 
-Safe_require("lul.keymaps.init")
-Safe_require("lul.functions")
-
-Safe_require("lul.lazy")
-
-Safe_require("lul.clipboard")
 
 
 function R(name)
