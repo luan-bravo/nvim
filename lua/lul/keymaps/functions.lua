@@ -1,6 +1,3 @@
-----------------------
--- Custom Functions --
-----------------------
 -- Track the messages buffer number
 vim.keymap.set("n", "<leader>msg", function()
     local messages_bufnr = nil
@@ -25,17 +22,23 @@ vim.keymap.set("n", "<leader>msg", function()
         vim.cmd("normal! gg")
     end
 end, { noremap = true, desc = "Opens hsplit buffer with ':messages' contents" })
+
+
 -- Go to first letter character in line
 vim.keymap.set("n", "<leader>fl", function()
     vim.cmd("normal! 0")
     vim.fn.search("[a-zA-Z]", "c", vim.fn.line("."))
 end, { noremap=true, silent=true, desc = "Go to first letter character" })
+
+
 -- Go to first alphanumeric character in line
 vim.keymap.set("n", "<leader>fa", function()
     vim.cmd("normal! 0")
     vim.fn.search("[a-zA-Z0-9]", "c", vim.fn.line("."))
 end, { noremap=true, silent=true, desc = "Go to first alphanulmeric character" })
--- Add rare spelling to my dict
+
+
+-- Add rare spelling
 vim.keymap.set("n", "z/", function()
     vim.cmd("normal! mz")
     vim.cmd("spellrare! "  .. vim.fn.expand("<cWORD>\'"))
