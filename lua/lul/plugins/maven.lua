@@ -4,7 +4,7 @@ return {
         local sm_ok, sm = pcall(require, "supermaven-nvim")
         if not sm_ok then return end
         sm.setup({
-                -- make maven only suggest when asked
+            -- make maven only suggest when asked
             keymaps = {
                 accept_suggestion = "<Tab>",
                 clear_suggestion = "<C-]>",

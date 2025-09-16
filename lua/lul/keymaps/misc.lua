@@ -20,7 +20,7 @@ vim.keymap.set("n", "<leader>vwm", function()
     if not vwm_ok then return end
     vwm.StartVimWithMe()
 end, {desc = "VimWithMe start"})
- 
+
 vim.keymap.set("n", "<leader>svwm", function()
     local vwm_ok, vwm = pcall(require, "vim-with-me")
     if not vwm_ok then return end

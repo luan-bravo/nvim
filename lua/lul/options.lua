@@ -1,14 +1,24 @@
 vim.g.mapleader = " "
 
-vim.opt.guicursor = ""
-vim.opt.showtabline = 1
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 0
+
+
+-- vim.opt.guicursor = ""
+vim.opt.showtabline = 0
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+
+    -- a
+local tabsize = 8
+vim.opt.tabstop = tabsize
+vim.opt.softtabstop = tabsize
+vim.opt.shiftwidth = tabsize
+vim.opt.expandtab = false
 
 vim.opt.smartindent = true
 
@@ -27,20 +37,16 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
+-- TODO: create a toggle for this
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
 vim.opt.list = true
--- vim.opt.listchars:append("space:⠂") -- \uec07
-vim.opt.listchars:append("eol:") -- \ue621
-
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-vim.g.netrw_liststyle = 3
-vim.g.netrw_browse_split = 0
+vim.opt.listchars:append("tab:| ")
+vim.opt.listchars:append("trail:-")
+vim.opt.listchars:append("eol:")
 
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
@@ -57,4 +63,3 @@ vim.opt.showmode = true
 vim.opt.showcmd = true
 
 vim.opt.report = 30
-

@@ -41,16 +41,16 @@ autocmd({ "BufEnter", "BufNewFile" }, {
     end,
 })
 
-vim.filetype.add({
-    extension = {
-        zsh = "bash",
-    },
-})
+-- vim.filetype.add({
+--     extension = {
+--         zsh = "bash",
+--     },
+-- })
 
 autocmd('FileType', {
     pattern = 'netrw',
     callback = function()
-	-- toggle opening file from netrw in current or split buffer if netrw full is full screen
+        -- toggle opening file from netrw in current or split buffer if netrw full is full screen
         if vim.fn.winnr('$') == 1 then
             vim.g.netrw_browse_split = 0
         else
@@ -77,4 +77,44 @@ autocmd("TermOpen", {
     callback = function()
         vim.opt_local.spell = false
     end
+})
+
+-- This snippet can be added to your ~/.config/nvim/init.lua
+-- It optimizes the Neovim experience for hosting a terminal shell.
+
+-- Create a dedicated augroup for terminal settings
+local term_group = vim.api.nvim_create_augroup('TerminalCustomizations', { clear = true })
+
+-- Autocommand to run when a terminal buffer is opened
+vim.api.nvim_create_autocmd('TermOpen', {
+    group = term_group,
+    pattern = '*',
+    callback = function()
+        -- Enter insert mode automatically for a shell-like experience
+        vim.cmd('startinsert')
+
+        -- Set buffer-local options for a cleaner look
+        vim.wo.number = false
+        vim.wo.relativenumber = false
+        vim.wo.signcolumn = 'no'
+
+        -- Optional: Uncomment the line below to hide the statusline in terminal buffers
+        -- vim.opt_local.laststatus = 0
+    end,
+})
+
+-- Autocommand to quit Neovim if the last window is a terminal that gets closed
+vim.api.nvim_create_autocmd('TermClose', {
+    group = term_group,
+    pattern = '*',
+    callback = function()
+        -- Check if this is the last buffer
+        local bufnrs = vim.api.nvim_list_bufs()
+        local is_last_buffer = #bufnrs == 1
+
+        if is_last_buffer then
+            -- If it's the last buffer, quit Neovim
+            vim.cmd('quitall!')
+        end
+    end,
 })

@@ -121,57 +121,57 @@ return {
         }
 
         --[[
-            dap.adapters.c = {
-            type = "executable",
-            command = "codelldb",
-            name = "lldb"
-            }
-            ]]
+        dap.adapters.c = {
+        type = "executable",
+        command = "codelldb",
+        name = "lldb"
+        }
+        ]]
 
         -- TODO: Actually set these up later and for js/ts
         --[[
-            dap.configurations.cpp = dap.configurations.c
-            dap.configurations.zig = dap.configurations.c
-            dap.adapters.cpp = dap.adapters.c
-            dap.adapters.zig = dap.adapters.c
-            dap.adapters.rust = dap.adapters.c
-            dap.configurations.rust = {
-            {
-            name = "Launch",
-            type = "rust",
-            request = "launch",
-            program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
-            end,
-            cwd = "${workspaceFolder}",
-            stopOnEntry = false,
-            args = {},
-            },
-            }
-            dap.adapters.go = {
-            type = "server",
-            port = "${port}",
-            executable = {
-            command = "dlv",
-            args = { "dap", "-l", "127.0.0.1:${port}" },
-            }
-            }
-            dap.configurations.go = {
-            {
-            type = "go",
-            name = "Debug",
-            request = "launch",
-            program = "${file}",
-            },
-            {
-            type = "go",
-            name = "Debug Test",
-            request = "launch",
-            mode = "test",
-            program = "${file}",
-            },
-            }
-            ]]
+        dap.configurations.cpp = dap.configurations.c
+        dap.configurations.zig = dap.configurations.c
+        dap.adapters.cpp = dap.adapters.c
+        dap.adapters.zig = dap.adapters.c
+        dap.adapters.rust = dap.adapters.c
+        dap.configurations.rust = {
+        {
+        name = "Launch",
+        type = "rust",
+        request = "launch",
+        program = function()
+        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        args = {},
+        },
+        }
+        dap.adapters.go = {
+        type = "server",
+        port = "${port}",
+        executable = {
+        command = "dlv",
+        args = { "dap", "-l", "127.0.0.1:${port}" },
+        }
+        }
+        dap.configurations.go = {
+        {
+        type = "go",
+        name = "Debug",
+        request = "launch",
+        program = "${file}",
+        },
+        {
+        type = "go",
+        name = "Debug Test",
+        request = "launch",
+        mode = "test",
+        program = "${file}",
+        },
+        }
+        ]]
 
         -- Custom breakpoint sign
         vim.fn.sign_define("DapBreakpoint", {

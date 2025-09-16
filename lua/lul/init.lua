@@ -19,9 +19,3 @@ function R(name)
     if not r_ok then return end
     reload.reload_module(name)
 end
-
-vim.filetype.add({
-    extension = {
-        templ = 'templ',
-    }
-})

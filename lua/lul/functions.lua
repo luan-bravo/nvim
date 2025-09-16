@@ -1,4 +1,4 @@
-Command = vim.api.nvim_create_user_command
+CreateCommand = vim.api.nvim_create_user_command
 
 function EditOnNewTab(path)
     vim.cmd("tabnew")
@@ -13,13 +13,24 @@ function EditOnNewTab(path)
         vim.cmd("Explore")
     end
 end
-Command("Configuration", function() EditOnNewTab("~/.config/nvim") end, { desc = "Open nvim config dir in a new tab with Explorer" })
-Command("Notes", function() EditOnNewTab("~/notes") end, { desc = "Open my notes dir in a new tab with Explorer" })
+CreateCommand("Configuration", function() EditOnNewTab("~/.config/nvim") end, { desc = "Open nvim config dir in a new tab with Explorer" })
+CreateCommand("Notes", function() EditOnNewTab("~/notes") end, { desc = "Open my notes dir in a new tab with Explorer" })
 
 
-Command("Format", function()
+CreateCommand("Format", function()
     vim.lsp.buf.format()
 end, { desc = "Open nvim config dir in a new tab with Explorer" })
+
+
+function NonLspIndent()
+    local oldspaces = vim.opt.tabstop
+    local spaces = 4
+    vim.opt.tabstop = spaces
+    vim.cmd("%retab!")
+    vim.opt.tabstop = oldspaces
+    vim.cmd("%retab!")
+    -- 4 space indent
+end
 
 function NonLspFormat()
     local ignore = {
@@ -40,5 +51,14 @@ function NonLspFormat()
     vim.cmd([[undojoin]])
     vim.cmd([[normal! `z]])
     vim.cmd([[normal! zz]])
+    NonLspIndent()
 end
-Command("NonLspFormat", function() NonLspFormat() end, { desc = "Format buffer minimally" })
+CreateCommand("NonLspFormat", function() NonLspFormat() end, { desc = "Format buffer minimally" })
+
+function MergeArrays(target, source)
+    local i = #target + 1
+    for _, v in ipairs(source) do
+        target[i] = v
+        i = i+1
+    end
+end
