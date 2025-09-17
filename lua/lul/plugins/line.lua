@@ -21,8 +21,8 @@ return {
                     update_in_insert = false, -- Set to true to update diagnostics in insert mode
                     sections = { 'error', 'warn', 'info', 'hint' },
                     symbols = { error = ' ', warn = ' ', info = ' ', hint = '󰴓 ' },
-                    diagnostics_color = {                                          
-                        error = { fg = '#ff0000' },                                
+                    diagnostics_color = {
+                        error = { fg = '#ff0000' },
                         warn = { fg = '#ffaa00' },
                         info = { fg = '#00ff00' },
                         hint = { fg = '#00aaff' },
