@@ -38,7 +38,9 @@ local pairs = {
 }
 
 for _, p in ipairs(pairs) do
-    local pair = p[1]; local trigger = p[2]; local padding = p[3]
+    local pair = p[1]
+    local trigger = p[2]
+    local padding = p[3]
     -- print(pair .. " " .. trigger .. " ")
 
 
@@ -46,7 +48,13 @@ for _, p in ipairs(pairs) do
 
     -- Padding for inserting to be surrounded text centralized to the surrounding text
     local pad = ""
-    if (padding == nil) then padding = (#pair/2)-1 end
+    if (padding == nil) then
+        if (#pair % 2 == 0) then
+            padding = (#pair/2)-1
+        else
+            padding = (#pair/2)
+        end
+    end
     pad = string.rep("h", padding)
 
     -- print(pair .. " " .. trigger .. " " .. pad)
