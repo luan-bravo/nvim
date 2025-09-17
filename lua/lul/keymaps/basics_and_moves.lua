@@ -1,5 +1,5 @@
 ------------------
--- Moves/Basics --
+-- Basics/Moves --
 ------------------
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Join line w/o moving cursor" })
 
@@ -26,3 +26,6 @@ vim.keymap.set("i", "<C-BS>", "<C-w>", { desc = "Delete previous word" })
 vim.keymap.set("i", "<C-Del>", "<C-o>dw", { desc = "Delete next word" })
 
 vim.keymap.set("n", "<S-F10>", "z=", { desc = "Correct spelling alias" })
+
+-- Terminal mode
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, desc = "Escape terminal mode" })
