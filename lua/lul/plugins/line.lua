@@ -9,7 +9,7 @@ return {
         local function recording_register()
             local reg = vim.fn.reg_recording()
             if reg == "" then return reg end
-            return "RECORDING @" .. reg
+            return "@" .. reg
         end
         lualine.setup({
             options = { theme = "gruvbox", },
