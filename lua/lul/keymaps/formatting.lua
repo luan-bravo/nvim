@@ -14,3 +14,5 @@ vim.keymap.set("n", "<leader>.F", function()
     NonLspFormat()
     vim.cmd("w")
 end, { silent = true,  desc = "Format buffer minimally and write" })
+
+-- TODO: map key to toggle 'TABSIZE' between 4 and 8 chars long (and another one to join with zen mode?)

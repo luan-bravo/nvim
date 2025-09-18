@@ -5,10 +5,12 @@ vim.opt.showtabline = 1
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+
+TABSIZE = 8
+vim.opt.tabstop = TABSIZE
+vim.opt.softtabstop = TABSIZE
+vim.opt.shiftwidth = TABSIZE
+vim.opt.expandtab = false
 
 vim.opt.smartindent = true
 
@@ -17,7 +19,7 @@ vim.opt.linebreak = true
 vim.opt.showbreak = " ↳" -- \u21b3
 
 vim.opt.swapfile = false
-vim.opt.backup = false
+-- vim.opt.backup = false -- didn't find in :help. Maybe from ThePrimeagen config for an older version?
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
@@ -33,8 +35,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.list = true
--- vim.opt.listchars:append("space:⠂") -- \uec07
-vim.opt.listchars:append("eol:") -- \ue621
+vim.opt.listchars:append("tab: ")
+vim.opt.listchars:append("trail:▒")
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
@@ -58,3 +60,5 @@ vim.opt.showcmd = true
 
 vim.opt.report = 30
 
+-- TODO: make a key binding to show 80th column line only for some seconds
+-- vim.opt.colorcolumn = "80"
