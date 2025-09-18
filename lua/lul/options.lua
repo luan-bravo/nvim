@@ -5,10 +5,12 @@ vim.opt.showtabline = 1
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+
+local tabsize = 8
+vim.opt.tabstop = tabsize
+vim.opt.softtabstop = tabsize
+vim.opt.shiftwidth = tabsize
+vim.opt.expandtab = false
 
 vim.opt.smartindent = true
 
