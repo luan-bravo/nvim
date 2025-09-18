@@ -51,8 +51,8 @@ vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
 vim.opt.ignorecase = true
 
 if vim.fn.getenv("SHELL") then
-    vim.env.shell = vim.fn.getenv("SHELL")
-    vim.opt.shell = vim.env.shell .. " -i" -- Sets shell to default user shell and logs in (zsh)
+	vim.env.shell = vim.fn.getenv("SHELL")
+	vim.opt.shell = vim.env.shell .. " -i" -- Sets shell to default user shell and logs in (zsh)
 end
 
 vim.opt.showmode = true

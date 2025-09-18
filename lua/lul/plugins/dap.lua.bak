@@ -1,167 +1,167 @@
 return {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-        "rcarriga/nvim-dap-ui",
-        "theHamsta/nvim-dap-virtual-text",
-        "nvim-telescope/telescope-dap.nvim",
-        "williamboman/mason.nvim",
-        "jay-babu/mason-nvim-dap.nvim",
-    },
-    config = function()
-        local d_status_ok, dap = pcall(require, "dap")
-        if not d_status_ok then return end
-        local dui_status_ok, dapui = pcall(require, "dapui")
-        if not dui_status_ok then return end
-        local dvt_status_ok, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
-        if not dvt_status_ok then return end
-        dap_virtual_text.setup({
-            -- This just tries to mitigate the chance that I leak tokens here. Probably won't stop it from happening...
-            display_callback = function(variable)
-                local name = string.lower(variable.name)
-                local value = string.lower(variable.value)
-                if name:match "secret" or name:match "api" or value:match "secret" or value:match "api" then
-                    return "*****"
-                end
+	"mfussenegger/nvim-dap",
+	dependencies = {
+		"rcarriga/nvim-dap-ui",
+		"theHamsta/nvim-dap-virtual-text",
+		"nvim-telescope/telescope-dap.nvim",
+		"williamboman/mason.nvim",
+		"jay-babu/mason-nvim-dap.nvim",
+	},
+	config = function()
+		local d_status_ok, dap = pcall(require, "dap")
+		if not d_status_ok then return end
+		local dui_status_ok, dapui = pcall(require, "dapui")
+		if not dui_status_ok then return end
+		local dvt_status_ok, dap_virtual_text = pcall(require, "nvim-dap-virtual-text")
+		if not dvt_status_ok then return end
+		dap_virtual_text.setup({
+			-- This just tries to mitigate the chance that I leak tokens here. Probably won't stop it from happening...
+			display_callback = function(variable)
+				local name = string.lower(variable.name)
+				local value = string.lower(variable.value)
+				if name:match "secret" or name:match "api" or value:match "secret" or value:match "api" then
+					return "*****"
+				end
 
-                if #variable.value > 15 then
-                    return " " .. string.sub(variable.value, 1, 15) .. "... "
-                end
+				if #variable.value > 15 then
+					return " " .. string.sub(variable.value, 1, 15) .. "... "
+				end
 
-                return " " .. variable.value
-            end,
-        })
+				return " " .. variable.value
+			end,
+		})
 
-        -- UI
-        dapui.setup()
-        dap.listeners.before.attach.dapui_config = function()
-            dapui.open()
-        end
-        dap.listeners.before.launch.dapui_config = function()
-            dapui.open()
-        end
-        dap.listeners.before.event_terminated.dapui_config = function()
-            dapui.close()
-        end
-        dap.listeners.before.event_exited.dapui_config = function()
-            dapui.close()
-        end
+		-- UI
+		dapui.setup()
+		dap.listeners.before.attach.dapui_config = function()
+			dapui.open()
+		end
+		dap.listeners.before.launch.dapui_config = function()
+			dapui.open()
+		end
+		dap.listeners.before.event_terminated.dapui_config = function()
+			dapui.close()
+		end
+		dap.listeners.before.event_exited.dapui_config = function()
+			dapui.close()
+		end
 
-        -- <<<<<<
-        local reg_ok, reg = pcall(require, "mason-registry")
-        if not reg_ok then return end
+		-- <<<<<<
+		local reg_ok, reg = pcall(require, "mason-registry")
+		if not reg_ok then return end
 
-        if reg.is_installed("codelldb") then
-            local codelldb_pkg = reg.get_package("codelldb")
-            Codelldb_path = codelldb_pkg:get_install_path() .. "/extension/adapter/codelldb"
-        else
-            Codelldb_path = vim.fn.exepath("codelldb") -- Fallback to system path
-        end
+		if reg.is_installed("codelldb") then
+			local codelldb_pkg = reg.get_package("codelldb")
+			Codelldb_path = codelldb_pkg:get_install_path() .. "/extension/adapter/codelldb"
+		else
+			Codelldb_path = vim.fn.exepath("codelldb") -- Fallback to system path
+		end
 
-        -- ======
-        local mreg = require "mason-registry"
-        local clpkg = mreg.get_package "codelldb"
-        local extension_path = clpkg:get_install_path() .. "/extension/"
-        local codelldb_path = extension_path .. "adapter/codelldb"
-        -- local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-        -- >>>>>>>
-        -- return codelldb_path, liblldb_path
-
-
-        dap.adapters.codelldb = {
-            type = "server",
-            port = "${port}",
-            executable = {
-                command = Codelldb_path,
-                args = { "--port", "${port}" },
-            },
-        }
-
-        dap.configurations.c = {
-            {
-                name = "Launch",
-                type = "codelldb",
-                request = "launch",
-                program = function()
-                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                end,
-                cwd = "${workspaceFolder}",
-                stopOnEntry = false,
-                args = {}
-            },
-        }
-
-        dap.configurations.cpp = dap.configurations.c
-        dap.configurations.rust = dap.configurations.c
-        local dap = require "dap"
-        dap.adapters.codelldb = {
-            type = "server",
-            port = "${port}",
-            executable = {
-                command = codelldb_path,
-                args = { "--port", "${port}" },
-
-                -- On windows you may have to uncomment this:
-                -- detached = false,
-            },
-        }
-        dap.configurations.cpp = {
-            {
-                name = "Launch file",
-                type = "codelldb",
-                request = "launch",
-                program = function()
-                    return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                end,
-                cwd = "${workspaceFolder}",
-                stopOnEntry = false,
-            },
-        }
-
-        dap.configurations.c = dap.configurations.cpp
-        dap.configurations.rust = dap.configurations.cpp
-
-        vim.fn.sign_define("DapBreakpoint", {
-            text = "🔴",
-            texthl = "SignColumn",
-            linehl = "",
-            numhl = ""
-        })
-
-        -- Steps
-        vim.keymap.set({ "n", "i" }, "<F1>", dap.continue, { desc = "DAP continue" })
-        vim.keymap.set({ "n", "i" }, "<F2>", dap.step_into, { desc = "DAP step into" })
-        vim.keymap.set({ "n", "i" }, "<F3>", dap.step_over, { desc = "DAP step over" })
-        vim.keymap.set({ "n", "i" }, "<F4>", dap.step_out, { desc = "DAP step out" })
-        vim.keymap.set({ "n", "i" }, "<F5>", dap.step_back, { desc = "DAP step back" })
-        -- Breakpoints
-        vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP toggle breakpoint" })
-        vim.keymap.set("n", "<leader>gb", dap.run_to_cursor, { desc = "DAP run to cursor" })
-        vim.keymap.set("n", "<leader>B", function()
-            dap.clear_breakpoints()
-        end, { desc = "DAP clear breakpoints" })
-        vim.keymap.set("n", "<leader>%", function()
-            dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-        end, { desc = "DAP set breakpoint" })
-        vim.keymap.set("n", "<leader>?", function()
-            -- Eval val under cursor (taken from tjdevries)
-            dapui.eval(nil, { enter = true })
-        end, { desc = "DAP eval val under cursor (taken from tjdevries)" })
-        -- Debug session
-        vim.keymap.set("n", "<leader>*", function()
-            dap.terminate()
-        end, { desc = "DAP terminate" })
-        vim.keymap.set("n", "<leader>&", function()
-            dap.restart()
-        end, { desc = "DAP restart" })
+		-- ======
+		local mreg = require "mason-registry"
+		local clpkg = mreg.get_package "codelldb"
+		local extension_path = clpkg:get_install_path() .. "/extension/"
+		local codelldb_path = extension_path .. "adapter/codelldb"
+		-- local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+		-- >>>>>>>
+		-- return codelldb_path, liblldb_path
 
 
-        -- TODO: Make into cmd commands
-        -- -- Telescope integration
-        local t_status_ok, telescope = pcall(require, "telescope")
-        telescope.load_extension("dap")
-        if not t_status_ok then return end
-        vim.keymap.set("n", "<leader>pdc", "<cmd>Telescope dap commands<CR>", { desc = "DAP Commands" })
-        vim.keymap.set("n", "<leader>pdb", "<cmd>Telescope dap list_breakpoints<CR>", { desc = "DAP Breakpoint" })
-        vim.keymap.set("n", "<leader>pdv", "<cmd>Telescope dap variables<CR>", { desc = "DAP Variables" })
-    end,
+		dap.adapters.codelldb = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = Codelldb_path,
+				args = { "--port", "${port}" },
+			},
+		}
+
+		dap.configurations.c = {
+			{
+				name = "Launch",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+				args = {}
+			},
+		}
+
+		dap.configurations.cpp = dap.configurations.c
+		dap.configurations.rust = dap.configurations.c
+		local dap = require "dap"
+		dap.adapters.codelldb = {
+			type = "server",
+			port = "${port}",
+			executable = {
+				command = codelldb_path,
+				args = { "--port", "${port}" },
+
+				-- On windows you may have to uncomment this:
+				-- detached = false,
+			},
+		}
+		dap.configurations.cpp = {
+			{
+				name = "Launch file",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false,
+			},
+		}
+
+		dap.configurations.c = dap.configurations.cpp
+		dap.configurations.rust = dap.configurations.cpp
+
+		vim.fn.sign_define("DapBreakpoint", {
+			text = "🔴",
+			texthl = "SignColumn",
+			linehl = "",
+			numhl = ""
+		})
+
+		-- Steps
+		vim.keymap.set({ "n", "i" }, "<F1>", dap.continue, { desc = "DAP continue" })
+		vim.keymap.set({ "n", "i" }, "<F2>", dap.step_into, { desc = "DAP step into" })
+		vim.keymap.set({ "n", "i" }, "<F3>", dap.step_over, { desc = "DAP step over" })
+		vim.keymap.set({ "n", "i" }, "<F4>", dap.step_out, { desc = "DAP step out" })
+		vim.keymap.set({ "n", "i" }, "<F5>", dap.step_back, { desc = "DAP step back" })
+		-- Breakpoints
+		vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP toggle breakpoint" })
+		vim.keymap.set("n", "<leader>gb", dap.run_to_cursor, { desc = "DAP run to cursor" })
+		vim.keymap.set("n", "<leader>B", function()
+			dap.clear_breakpoints()
+		end, { desc = "DAP clear breakpoints" })
+		vim.keymap.set("n", "<leader>%", function()
+			dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+		end, { desc = "DAP set breakpoint" })
+		vim.keymap.set("n", "<leader>?", function()
+			-- Eval val under cursor (taken from tjdevries)
+			dapui.eval(nil, { enter = true })
+		end, { desc = "DAP eval val under cursor (taken from tjdevries)" })
+		-- Debug session
+		vim.keymap.set("n", "<leader>*", function()
+			dap.terminate()
+		end, { desc = "DAP terminate" })
+		vim.keymap.set("n", "<leader>&", function()
+			dap.restart()
+		end, { desc = "DAP restart" })
+
+
+		-- TODO: Make into cmd commands
+		-- -- Telescope integration
+		local t_status_ok, telescope = pcall(require, "telescope")
+		telescope.load_extension("dap")
+		if not t_status_ok then return end
+		vim.keymap.set("n", "<leader>pdc", "<cmd>Telescope dap commands<CR>", { desc = "DAP Commands" })
+		vim.keymap.set("n", "<leader>pdb", "<cmd>Telescope dap list_breakpoints<CR>", { desc = "DAP Breakpoint" })
+		vim.keymap.set("n", "<leader>pdv", "<cmd>Telescope dap variables<CR>", { desc = "DAP Variables" })
+	end,
 }

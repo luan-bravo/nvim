@@ -16,13 +16,13 @@ vim.keymap.set("n", "<leader><leader>mr", "<cmd>CellularAutomaton make_it_rain<C
 
 -- Vim with Me
 vim.keymap.set("n", "<leader>vwm", function()
-    local vwm_ok, vwm = pcall(require, "vim-with-me")
-    if not vwm_ok then return end
-    vwm.StartVimWithMe()
+	local vwm_ok, vwm = pcall(require, "vim-with-me")
+	if not vwm_ok then return end
+	vwm.StartVimWithMe()
 end, {desc = "VimWithMe start"})
  
 vim.keymap.set("n", "<leader>svwm", function()
-    local vwm_ok, vwm = pcall(require, "vim-with-me")
-    if not vwm_ok then return end
-    vwm.StopVimWithMe()
+	local vwm_ok, vwm = pcall(require, "vim-with-me")
+	if not vwm_ok then return end
+	vwm.StopVimWithMe()
 end, {desc = "VimWithMe stop"})
