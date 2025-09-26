@@ -41,12 +41,6 @@ autocmd({ "BufEnter", "BufNewFile" }, {
 	end,
 })
 
-vim.filetype.add({
-	extension = {
-		zsh = "bash",
-	},
-})
-
 autocmd('FileType', {
 	pattern = 'netrw',
 	callback = function()
