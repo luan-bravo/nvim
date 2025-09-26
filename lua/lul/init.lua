@@ -1,7 +1,9 @@
 function SafeRequire(module)
-	local ok, _ = pcall(require, module)
+	local ok, m = pcall(require, module)
 	if not ok then
-		vim.notify("Failed to require '" .. module .. "'", vim.log.levels.ERROR)
+		vim.notify(
+			"Failed to require '" .. module .. "'" .. "\n\n" .. m,
+			vim.log.levels.ERROR)
 	end
 end
 
