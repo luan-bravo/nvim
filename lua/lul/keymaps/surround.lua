@@ -5,7 +5,7 @@
 vim.keymap.set({ "n","v" }, "s", "<nop>")
 vim.keymap.set({ "n","v" }, "S", "<nop>")
 
-local pairs = {
+local surrounding_pairs = {
 	{"\"\"", "\""},
 	{"\"\"", "q"},
 	{"''", "'"},
@@ -35,6 +35,7 @@ local pairs = {
 	{"****", "b"},
 	{"_****_", "I"},
 	{"_****_", "B"},
+	{"~~", "~"}
 }
 
 for _, p in ipairs(pairs) do
