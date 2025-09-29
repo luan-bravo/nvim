@@ -6,7 +6,7 @@ vim.opt.showtabline = 1
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-TABSIZE = 8
+TABSIZE = 4
 vim.opt.tabstop = TABSIZE
 vim.opt.softtabstop = TABSIZE
 vim.opt.shiftwidth = TABSIZE
@@ -57,6 +57,7 @@ end
 
 vim.opt.showmode = true
 vim.opt.showcmd = true
+vim.opt.showcmdloc = "statusline"
 
 vim.opt.report = 30
 
