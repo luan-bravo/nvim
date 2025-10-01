@@ -36,7 +36,7 @@ vim.opt.updatetime = 50
 
 vim.opt.list = true
 
-vim.opt.listchars:append("tab:  ")
+vim.opt.listchars:append("tab: ")
 vim.opt.listchars:append("trail:▒")
 
 vim.g.netrw_browse_split = 0
