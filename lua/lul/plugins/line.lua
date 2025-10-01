@@ -1,8 +1,5 @@
 return {
 	{
-
-	},
-	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -22,7 +19,7 @@ return {
 			lualine.setup({
 				options = { theme = "gruvbox", },
 				sections = {
-					lualine_a = { recording_register, "mode" },
+					lualine_a = { "mode", recording_register },
 					lualine_b = {
 						{
 							"diagnostics",
@@ -40,7 +37,7 @@ return {
 					},
 					lualine_c = { "%S" },
 
-					lualine_x = { "filename", "filetype", "branch" },
+					lualine_x = { "branch" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
 				}
