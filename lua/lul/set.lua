@@ -30,8 +30,14 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.list = true
+<<<<<<< Updated upstream:lua/lul/set.lua
 vim.opt.listchars:append("space:⠂") -- \uec07
 vim.opt.listchars:append("eol:") -- \ue621
+=======
+
+vim.opt.listchars:append("tab:| ")
+vim.opt.listchars:append("trail:▒")
+>>>>>>> Stashed changes:lua/lul/options.lua
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
