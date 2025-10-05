@@ -108,4 +108,5 @@ for _, p in ipairs(surrounding_pairs) do
 
 	vim.keymap.set("n", "s"..trigger, selection.normal_word, { desc = desc } )
 	vim.keymap.set("n", "S"..trigger, selection.normal_Word, { desc = desc } )
+	-- TODO: Fix it for v-line mode (works great with )
 end

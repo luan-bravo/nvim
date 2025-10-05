@@ -19,7 +19,9 @@ vim.opt.linebreak = true
 vim.opt.showbreak = " ↳" -- \u21b3
 
 vim.opt.swapfile = false
--- vim.opt.backup = false -- didn't find in :help. Maybe from ThePrimeagen config for an older version?
+-- TODO: Find more about this
+-- vim.opt.backup = false
+-- TODO: move undodir to a better
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
