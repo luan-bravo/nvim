@@ -65,4 +65,4 @@ vim.opt.showcmdloc = "statusline"
 vim.opt.report = 30
 
 -- TODO: make a key binding to show 80th column line only for some seconds
--- vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
