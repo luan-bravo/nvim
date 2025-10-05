@@ -30,9 +30,6 @@ vim.keymap.set("n", "<S-F10>", "z=", { desc = "Correct spelling alias" })
 -- Terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, desc = "Escape terminal mode" })
 
--- Easier double quotes
-vim.keymap.set("n", "viq", "vi\"", { desc = "Select inside double quotes - 'vi\"' alias" })
-vim.keymap.set("n", "vaq", "va\"", { desc = "Select around double quotes - 'va\"' alias" })
 
 vim.keymap.set("n", "diq", "di\"", { desc = "Select inside double quotes - 'di\"' alias" })
 vim.keymap.set("n", "daq", "da\"", { desc = "Select around double quotes - 'da\"' alias" })
@@ -42,3 +39,8 @@ vim.keymap.set("n", "caq", "ca\"", { desc = "Select around double quotes - 'ca\"
 
 vim.keymap.set("n", "yiq", "yi\"", { desc = "Select inside double quotes - 'yi\"' alias" })
 vim.keymap.set("n", "yaq", "ya\"", { desc = "Select around double quotes - 'ya\"' alias" })
+-- TODO: Create easierInsideArround() in surround.lua
+vim.keymap.set("v", "iq", "i\"",
+	{ desc = "Select inside '\"\"'" })
+vim.keymap.set("v", "aq", "a\"",
+	{ desc = "Select around '\"\"'" })
