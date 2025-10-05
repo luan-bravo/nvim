@@ -39,14 +39,16 @@ local surrounding_pairs = {
 }
 
 for _, p in ipairs(surrounding_pairs) do
-	local pair = p[1] -- pattern to surround the text
+	local pair = p[1] -- Pair to surround the text with
 
-	local trigger = p[2] -- pattern to cut out the text
+	local trigger = p[2] --  Pair's trigger key
 	if (trigger == "") then trigger = pair end
 
 	local middle = 0 -- pair's index where text should be inserted
-	-- Padding for inserting to be surrounded text centralized to the surrounding text
-		-- Ie even length --- (x < 1) to account for auto float casting
+
+	-- Padding for inserting to be surrounded text centralized to the
+		-- surrounding text
+	-- If even length  (`x < 1` to account for auto float casting)
 	if ((#pair % 2) < 1) then
 		middle = (#pair/2)
 	else
@@ -103,10 +105,14 @@ for _, p in ipairs(surrounding_pairs) do
 	-- vim.fn.getreg('<register>')
 
 	--- Generate surround keymaps
-	vim.keymap.set("v", "s"..trigger, selection.visual, { desc = desc } )
-	vim.keymap.set("v", "S"..trigger, selection.visual, { desc = desc } )
-
-	vim.keymap.set("n", "s"..trigger, selection.normal_word, { desc = desc } )
-	vim.keymap.set("n", "S"..trigger, selection.normal_Word, { desc = desc } )
 	-- TODO: Fix it for v-line mode (works great with )
+	vim.keymap.set("v", "s"..trigger, selection.visual,
+		{ desc = desc } )
+	vim.keymap.set("v", "S"..trigger, selection.visual,
+		{ desc = desc } )
+
+	vim.keymap.set("n", "s"..trigger, selection.normal_word,
+		{ desc = desc } )
+	vim.keymap.set("n", "S"..trigger, selection.normal_Word,
+		{ desc = desc } )
 end
