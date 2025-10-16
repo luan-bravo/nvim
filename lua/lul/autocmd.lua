@@ -1,8 +1,8 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
+Group = vim.api.nvim_create_augroup
+Auto = vim.api.nvim_create_autocmd
 
-local yank_group = augroup('HighlightYank', {})
-autocmd('TextYankPost', {
+local yank_group = Group('HighlightYank', {})
+Auto('TextYankPost', {
 	group = yank_group,
 	pattern = '*',
 	callback = function()
@@ -13,8 +13,8 @@ autocmd('TextYankPost', {
 	end,
 })
 
-local lul = augroup('lul', {})
-autocmd('LspAttach', {
+local lul = Group('lul', {})
+Auto('LspAttach', {
 	group = lul,
 	callback = function(e)
 		vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { buffer = e.buf, desc = "Go to definition" })
@@ -31,7 +31,7 @@ autocmd('LspAttach', {
 })
 
 -- Redo (go down undotree)
-autocmd({ "BufEnter", "BufNewFile" }, {
+Auto({ "BufEnter", "BufNewFile" }, {
 	group = lul,
 	pattern = "*",
 	callback = function()
@@ -41,20 +41,21 @@ autocmd({ "BufEnter", "BufNewFile" }, {
 	end,
 })
 
-autocmd('FileType', {
-	pattern = 'netrw',
-	callback = function()
-	-- toggle opening file from netrw in current or split buffer if netrw full is full screen
-		if vim.fn.winnr('$') == 1 then
-			vim.g.netrw_browse_split = 0
-		else
-			vim.g.netrw_browse_split = 4
-		end
-	end,
-})
+-- Toggle opening file from netrw in current or split buffer if netrw full is full screen
+-- autocmd('FileType', {
+-- 	pattern = 'netrw',
+-- 	callback = function()
+-- 		if vim.fn.winnr('$') == 1 then
+-- 			vim.g.netrw_browse_split = 0
+-- 		else
+-- 			vim.g.netrw_browse_split = 4
+-- 		end
+-- 	end,
+-- })
 
-augroup("SpellOff", { clear = true })
-autocmd("BufEnter", {
+--
+Group("SpellOff", { clear = true })
+Auto("BufEnter", {
 	group = "SpellOff",
 	pattern = "*",
 	callback = function()
@@ -65,7 +66,9 @@ autocmd("BufEnter", {
 		end
 	end,
 })
-autocmd("TermOpen", {
+
+-- No spell checking on Term mode
+Auto("TermOpen", {
 	group = "SpellOff",
 	pattern = "*",
 	callback = function()
