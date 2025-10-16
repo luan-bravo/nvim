@@ -22,8 +22,8 @@ vim.keymap.set("i", "<C-BS>", "<C-H>",
 vim.keymap.set("i", "<C-Del>", "<C-o>dw",
 	{ desc = "Delete next word" })
 
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>",
-	{ desc = "Escape terminal mode", noremap = true })
+-- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>",
+-- 	{ desc = "Escape terminal mode", noremap = true })
 
 -- TODO: Create easierInsideArround() in surround.lua
 vim.keymap.set("v", "iq", "i\"",
