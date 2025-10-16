@@ -4,7 +4,9 @@ function SafeRequire(module)
 		vim.notify(
 			"Failed to require '" .. module .. "'" .. "\n\n" .. m,
 			vim.log.levels.ERROR)
+		return
 	end
+	return m
 end
 
 SafeRequire("lul.options")
