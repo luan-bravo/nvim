@@ -75,3 +75,20 @@ Auto("TermOpen", {
 		vim.opt_local.spell = false
 	end
 })
+
+--- Make trailing spaces only visible when not in insert mode
+local listchars_group = Group('DynamicListChars', { clear = true })
+Auto('InsertEnter', {
+  group = listchars_group,
+  pattern = '*',
+  callback = function()
+    vim.opt.listchars:remove("trail")
+  end,
+})
+Auto('InsertLeave', {
+  group = listchars_group,
+  pattern = '*',
+  callback = function()
+    vim.opt.listchars:append("trail:▒")
+  end,
+})
