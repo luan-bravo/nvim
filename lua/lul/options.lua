@@ -14,11 +14,6 @@ vim.opt.showtabline = 1
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-TABSIZE = 4
-vim.opt.tabstop = TABSIZE
-vim.opt.softtabstop = TABSIZE
-vim.opt.shiftwidth = TABSIZE
-vim.opt.expandtab = false
 vim.opt.signcolumn = "yes"
 
 -- TODO: make a key binding to show 80th column line only for some seconds
