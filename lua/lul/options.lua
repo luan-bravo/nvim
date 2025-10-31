@@ -8,6 +8,7 @@ vim.opt.guicursor:append({
 	"o:hor50",
 })
 
+-- Columns
 vim.opt.showtabline = 1
 
 vim.opt.number = true
@@ -18,6 +19,13 @@ vim.opt.tabstop = TABSIZE
 vim.opt.softtabstop = TABSIZE
 vim.opt.shiftwidth = TABSIZE
 vim.opt.expandtab = false
+vim.opt.signcolumn = "yes"
+
+-- TODO: make a key binding to show 80th column line only for some seconds
+vim.opt.colorcolumn = "80"
+
+vim.opt.encoding = "utf-8"
+
 vim.opt.smartindent = true
 
 vim.opt.wrap = false
@@ -29,6 +37,7 @@ vim.opt.swapfile = false
 -- vim.opt.backup = false
 -- TODO: move undodir to a better
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
 vim.opt.undofile = true
 
 vim.opt.hlsearch = true
@@ -37,7 +46,6 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
@@ -55,14 +63,17 @@ vim.g.netrw_browse_split = 0
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 
-vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
-
-if vim.fn.getenv("SHELL") then
-	vim.env.shell = vim.fn.getenv("SHELL")
-	-- Sets shell to default user shell and logs in (zsh)
-	vim.opt.shell = vim.env.shell .. " -i"
-end
+vim.opt.foldopen:append({
+	"mark",
+	"percent",
+	"quickfix",
+	"search",
+	"tag",
+	"undo",
+})
 vim.opt.smartcase = true
+
+vim.opt.shell = (vim.env.SHELL) and vim.env.SHELL.." -i" or nil
 
 vim.opt.showmode = true
 vim.opt.showcmd = true
@@ -70,5 +81,3 @@ vim.opt.showcmdloc = "statusline"
 
 vim.opt.report = 30
 
--- TODO: make a key binding to show 80th column line only for some seconds
-vim.opt.colorcolumn = "80"
