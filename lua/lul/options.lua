@@ -56,13 +56,13 @@ vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 
 vim.opt.foldopen = "mark,percent,quickfix,search,tag,undo"
-vim.opt.ignorecase = true
 
 if vim.fn.getenv("SHELL") then
 	vim.env.shell = vim.fn.getenv("SHELL")
 	-- Sets shell to default user shell and logs in (zsh)
 	vim.opt.shell = vim.env.shell .. " -i"
 end
+vim.opt.smartcase = true
 
 vim.opt.showmode = true
 vim.opt.showcmd = true
