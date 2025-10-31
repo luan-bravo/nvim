@@ -1,6 +1,13 @@
 vim.g.mapleader = " "
 
-vim.opt.guicursor = ""
+-- Cursor
+vim.opt.guicursor:append({
+	"n-c:block",
+	"i-ci-ve:ver25",
+	"v-r-cr:hor20",
+	"o:hor50",
+})
+
 vim.opt.showtabline = 1
 
 vim.opt.number = true
