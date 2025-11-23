@@ -1,14 +1,85 @@
 return {
-	-- 'MeanderingProgrammer/render-markdown.nvim',
-	-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-	-- -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-	-- -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-	-- ---@module 'render-markdown'
-	-- ---@type render.md.UserConfig
-	-- opts = {},
-	-- config = function ()
-	--	 local rmd_ok, rendermd = pcall(require, "render-markdown")
-	--		 if not rmd_ok then return end
-	--	 rendermd.setup({ })
-	-- end
+	{
+		-- 'MeanderingProgrammer/render-markdown.nvim',
+		-- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+		-- -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+		-- -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+		-- ---@module 'render-markdown'
+		-- ---@type render.md.UserConfig
+		-- opts = {},
+		-- config = function ()
+		--	 local rmd_ok, rendermd = pcall(require, "render-markdown")
+		--		 if not rmd_ok then return end
+		--	 rendermd.setup({ })
+		-- end
+	},
+	{
+		-- "epwalsh/obsidian.nvim",
+		-- version = "*",
+		-- dependencies = { "nvim-lua/plenary.nvim", },
+		-- lazy = true,
+		-- ft = "markdown",
+		-- -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+		-- -- event = {
+		-- --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+		-- --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+		-- --   -- refer to `:h file-pattern` for more examples
+		-- --   "BufReadPre path/to/my-vault/*.md",
+		-- --   "BufNewFile path/to/my-vault/*.md",
+		-- -- },
+		-- opts = { },
+		-- config = function()
+		--	 local obs_ok, obsidian = pcall(require, "obsidian")
+		--	 if not obs_ok then return end
+		--	 obsidian.setup({
+		--		 workspaces = {
+		--			 { name = "personal", path = "~/notes/personal/", },
+		--			 { name = "classes", path = "~/notes/classes/", },
+		--			 { name = "studies", path = "~/notes/studies/", },
+		--			 { name = "todos", path = "~/notes/todos/", },
+		--		 },
+		--		 -- ui = {
+		--		 --	 enable = true,
+		--		 --	 checkboxes = {
+		--		 --	 [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+		--		 --	 ["x"] = { char = "", hl_group = "ObsidianDone" },
+		--		 --	 [">"] = { char = "", hl_group = "ObsidianRightArrow" },
+		--		 --	 ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+		--		 --	 ["!"] = { char = "", hl_group = "ObsidianImportant" },
+		--		 --	 },
+		--		 -- },
+		--	 })
+		--	 local md_g = Group("MarkdownGroup", {}),
+		--	 Autocmd({"BufEnter", "BufRead"}, {
+		--		 group = md_g,
+		--		 pattern = "*.md",
+		--		 callback = function()
+		--			 vim.keymap.set("n", "<leader><cr>", function()
+		--				 return obsidian.util.smart_action()
+		--			 end, { buffer = true, expr = true,
+		--					 desc = "Obsidian smart action" }
+		--			 )
+		--			 vim.keymap.set("n", "<leader>ox", function()
+		--				 return obsidian.util.toggle_checkbox()
+		--			 end, { buffer = true, expr = true,
+		--					 desc = "Obsidian Toggle checkbox" }
+		--			 )
+		--			 --[[
+	--			 -- Obsidian toggle list
+	--			 vim.keymap.set("n", "<leader>ol", function()
+	--					 return obsidian.util.smart_action()
+	--				 end,
+	--				 { buffer = true, expr = true }
+	--			 )
+	--			 -- toggle numbered list
+	--			 vim.keymap.set("n", "<leader>on", function()
+	--					 return obsidian.util.smart_action()
+	--				 end,
+	--				 { buffer = true, expr = true }
+	--			 )
+	--			 --]]
+		--		 end,
+		--	 })
+		-- end
+	},
 }

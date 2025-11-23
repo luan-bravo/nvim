@@ -188,7 +188,7 @@ return {
 		vim.keymap.set({ "n", "i" }, "<F4>", dap.step_out, { desc = "DAP step out" })
 		vim.keymap.set({ "n", "i" }, "<F5>", dap.step_back, { desc = "DAP step back" })
 		-- Breakpoints
-		vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP toggle breakpoint" })
+		vim.keymap.set("n", "<leader>get_packageb", dap.toggle_breakpoint, { desc = "DAP toggle breakpoint" })
 		vim.keymap.set("n", "<leader>gb", dap.run_to_cursor, { desc = "DAP run to cursor" })
 		vim.keymap.set("n", "<leader>B", function()
 			dap.clear_breakpoints()

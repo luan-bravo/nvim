@@ -34,8 +34,9 @@ return {
 	--		 --	 },
 	--		 -- },
 	--	 })
-	--	 vim.api.nvim_create_autocmd({"BufEnter", "BufRead"}, {
-	--		 group = vim.api.nvim_create_augroup("MarkdownGroup", {}),
+	--	 local md_g = Group("MarkdownGroup", {}),
+	--	 Autocmd({"BufEnter", "BufRead"}, {
+	--		 group = md_g,
 	--		 pattern = "*.md",
 	--		 callback = function()
 	--			 vim.keymap.set("n", "<leader><cr>", function()

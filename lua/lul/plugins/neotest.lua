@@ -10,12 +10,15 @@ return {
 			"nvim-neotest/neotest-plenary",
 		},
 		config = function()
-			local nt_ok, neotest = pcall(require, "neotest")
+			local nt_ok, neotest		= pcall(require, "neotest")
 			if not nt_ok then return end
-			local ntvt_ok, nt_vitest = pcall(require, "neotest-vitest")
+
+			local ntvt_ok, nt_vitest	= pcall(require, "neotest-vitest")
 			if not ntvt_ok then return end
-			local ntpl_ok, nt_plenary = pcall(require, "neotest-plenary")
+
+			local ntpl_ok, nt_plenary	= pcall(require, "neotest-plenary")
 			if not ntpl_ok then return end
+
 			neotest.setup({
 				adapters = {
 					nt_vitest,
@@ -24,6 +27,11 @@ return {
 						-- in all my projects
 						min_init = "./scripts/tests/minimal.vim",
 					}),
+					require("neotest-jest")({
+						jestCommand = "npm test --",
+						jestConfigFile = "jest.config.js",
+						env = { CI = "true" },
+					})
 				}
 			})
 

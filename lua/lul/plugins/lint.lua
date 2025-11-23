@@ -10,6 +10,7 @@ return {
 			auto_update = true,
 			run_on_start = true,
 		})
+
 		local lint_ok, lint = pcall(require, "lint")
 		if not lint_ok then return end
 		lint.linters_by_ft = {
@@ -19,7 +20,10 @@ return {
 
 
 		lint.linters.shellcheck.cmd = vim.fn.stdpath("data") .. "/mason/bin/shellcheck"
-		vim.api.nvim_create_autocmd({"BufWritePost", "BufEnter"}, {
+
+		local lint_g = Group("lint_g", {})
+		Autocmd({"BufWritePost", "BufEnter"}, {
+			group = lint_g,
 			callback = function()
 				lint.try_lint()
 			end,

@@ -2,8 +2,7 @@ return {
 	{
 		"windwp/nvim-ts-autotag", -- Automatically renames and closes HTML/HTMX/JSX tags
 		config = function()
-			local at = SafeRequire("nvim-ts-autotag")
-			if not at then return end
+			local at = require("nvim-ts-autotag")
 			at.setup({
 				autotag = {
 					enable = true,

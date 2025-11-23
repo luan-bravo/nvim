@@ -1,0 +1,4 @@
+[submodule "sylvan"]
+	path = sylvan
+	url = https://github.com/luan-bravo/nvim.git
+	branch = sylvan

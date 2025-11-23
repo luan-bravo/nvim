@@ -19,3 +19,17 @@ perhaps not
 
 ### Which Key
 titles with the pressed key
+
+# TODOS - nvim:
+- [ ] set snippets
+
+## DAPs
+- [ ] Setup JS / web DAPs
+
+
+## Surround
+- [ ] Add the possibility to have triggers be an array of triggers to create aliases more easily
+- [ ] For simple pairs, enable auto set trigger:
+
+## Others
+- [ ] Sync `tabline` with `Oil.nvim`

@@ -15,11 +15,13 @@ local keymaps = {
 -- 	local extention = ".lua"
 -- 	local filename = file[1:-#extention]
 -- 	if filename == extentiona then
--- 		SafeRequire("lul.keymaps." .. file_title)
+-- 		require("lul.keymaps." .. file_title)
 -- 	end
 -- end
---
 
-for _, k in ipairs(keymaps) do
-	SafeRequire("lul.keymaps." .. k)
+for _, km in ipairs(keymaps) do
+	local ok, module = pcall(require, "lul.keymaps."..km)
+	if not ok then
+		vim.notify("Failed to require file "..km.."\n"..module, vim.log.levels.ERROR)
+	end
 end

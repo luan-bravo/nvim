@@ -1,52 +1,66 @@
-local function set_opts(tabsize)
-	vim.opt.tabstop = tabsize
-	vim.opt.softtabstop = tabsize
-	vim.opt.shiftwidth = tabsize
-end
-local function set_bo(buf, size)
-	vim.bo[buf].tabstop = size
-	vim.bo[buf].softtabstop = size
-	vim.bo[buf].shiftwidth = size
-end
+---Default tab size
+local tab = {
+	default = {
+		size = 4, min_size = 2
+	},
+}
+assert(tab.default.min_size < tab.default.size, { message = "Default minimum tabstop size is bigger than default size" })
 
-local default_min_size = 2
-local default_size = 4
-
-Tab = { }
-Tab.default.size = (default_size >= default_min_size) and default_size or default_min_size
-
-function Tab:set(tabsize)
-	self.default.size = (tabsize >= default_min_size) and tabsize or default_min_size
-	set_opts(self.default.size)
+function tab.set_opts(tabstop)
+	vim.opt.tabstop = tabstop
+	vim.opt.softtabstop = tabstop
+	vim.opt.shiftwidth = tabstop
 end
-function Tab:double()
+function tab:set(tabstop)
+	self.default.size = (tabstop >= self.default.min_size)
+		and tabstop
+		or self.default.min_size
+	self.set_opts(self.default.size)
+end
+function tab:double()
 	self:set(self.default.size * 2)
 end
-function Tab:half()
+function tab:half()
 	self:set(self.default.size / 2)
 end
 
-function Tab:set_buf(tabsize)
-	local buf = vim.api.nvim_get_current_buf()
-	self[buf].size = (tabsize >= default_min_size) and tabsize or default_min_size
-	set_bo(buf, self[buf].size)
-end
-function Tab:double_buf()
-	local buf = vim.api.nvim_get_current_buf()
-	self:set_buf(self[buf].size * 2)
-end
-function Tab:half_buf()
-	local buf = vim.api.nvim_get_current_buf()
-	self:set_buf(self[buf].size / 2)
-end
+-- function tab:set_buf_opts(buf, size)
+-- 	self[buf] = { size =  self.default.size, }
+-- 	vim.bo[buf].tabstop = size
+-- 	vim.bo[buf].softtabstop = size
+-- 	vim.bo[buf].shiftwidth = size
+-- end
+-- function tab:set_buf(tabstop)
+-- 	local buf = vim.api.nvim_get_current_buf()
+-- 	self[buf].size = (tabstop >= self.default.min_size)
+-- 		and tabstop
+-- 		or self.default.min_size
+-- 	self:set_buf_opts(buf, self[buf].size)
+-- end
+-- function tab:double_buf()
+-- 	local buf = vim.api.nvim_get_current_buf()
+-- 	self:set_buf(self[buf].size * 2)
+-- end
+-- function tab:half_buf()
+-- 	local buf = vim.api.nvim_get_current_buf()
+-- 	self:set_buf(self[buf].size / 2)
+-- end
 
-Tab:set(Tab.size) -- set default tab opts
 
-vim.keymap.set("n", "<leader><tab>", function() Tab:set_buf(Tab.default.size) end, { desc = "Set (soft)tabstop,shiftwirdth=4" })
-vim.keymap.set("n", "<leader><leader><tab>", function() Tab:set(default_size) end, { desc = "Set (soft)tabstop,shiftwirdth=4" })
+vim.keymap.set("n", "<leader>>", function() tab:double() end,
+	{ desc = "Double tab Size" })
+vim.keymap.set("n", "<leader><", function() tab:half() end,
+	{ desc = "Half tab Size" })
 
-vim.keymap.set("n", "<leader>>", function() Tab:double_buf() end, { desc = "Double Tab Size" })
-vim.keymap.set("n", "<leader><", function() Tab:half_buf() end, { desc = "Half Tab Size" })
+-- vim.keymap.set("n", "<leader><tab>", function() tab:set_buf(tab.default.size) end,
+-- 	{ desc = "Set (soft)tabstop, shiftwirdth to buffer default" })
+-- vim.keymap.set("n", "<leader>>", function() tab:double_buf() end,
+-- 	{ desc = "Double tab Size" })
+-- vim.keymap.set("n", "<leader><", function() tab:half_buf() end,
+-- 	{ desc = "Half tab Size" })
 
-vim.keymap.set("n", "<leader><leader>>", function() Tab:double() end, { desc = "Double Tab Size" })
-vim.keymap.set("n", "<leader><leader><", function() Tab:half() end, { desc = "Half Tab Size" })
+
+tab:set(tab.default.size)
+vim.opt.expandtab = false
+
+return tab

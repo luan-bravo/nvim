@@ -1,4 +1,3 @@
-
 return {
 	"folke/zen-mode.nvim",
 	config = function()
@@ -12,12 +11,12 @@ return {
 				},
 			}
 			zen.toggle()
-			-- vim.wo.wrap = false
 			vim.wo.number = true
+			vim.wo.rnu = true
+			local tabsize
 			vim.wo.rnu = true
 			ColorMyPencils()
 		end, { desc = "Zen Shallow"})
-
 
 		vim.keymap.set("n", "<leader>zZ", function()
 			zen.setup {
@@ -27,13 +26,12 @@ return {
 				},
 			}
 			zen.toggle()
-			-- vim.wo.wrap = false
+			vim.wo.wrap = true
+			vim.wo.tabsize = true
 			vim.wo.number = false
 			vim.wo.rnu = false
-			vim.opt.colorcolumn = "0"
+			vim.opt.colorcolumn = ""
 			ColorMyPencils()
 		end, { desc = "Zen Deep"})
 	end
 }
-
-

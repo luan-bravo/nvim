@@ -35,7 +35,10 @@ local surrounding_pairs = {
 	{"****", "b"},
 	{"_****_", "I"},
 	{"_****_", "B"},
-	{"~~", "~"}
+	{"~~", "~"},
+	{"  ", "  "},
+	{"%%", "%"},
+	{"%{%}", " %"}
 }
 
 for _, p in ipairs(surrounding_pairs) do
