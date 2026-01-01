@@ -96,7 +96,7 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
+                { name = 'luasnip' }, -- For `luasnip` users.
             }, {
                 { name = 'buffer' },
             })
@@ -113,9 +113,8 @@ return {
                 prefix = "",
             },
         })
-        -- luan-brav0 custom lsp config
-        -- set zsh files to be treated as bash by lsps
-        require('lspconfig').bashls.setup {
+        local lspconfig = require('lspconfig')
+        lspconfig.bashls.setup {
             filetypes = { "sh", "bash", "zsh" },
         }
     end
