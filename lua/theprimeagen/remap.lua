@@ -27,7 +27,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
--- This is going to get me cancelled
+-- This is going to get me canceled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
@@ -56,7 +56,11 @@ end)
 
 -- luan-brav0 mods from here on
 vim.keymap.set("n", "<leader>w", ":w<CR>")
-vim.keymap.set("n", "<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>W", ":wa<CR>")
+vim.keymap.set("n", "<leader>Q", ":q<CR>")
+vim.keymap.set("n", "<leader>q", ":bdelete<CR>")
+vim.keymap.set("n", "<leader>h", ":bprevious<CR>")
+vim.keymap.set("n", "<leader>l", ":bnext<CR>")
 
 
 -- Track the messages buffer number
